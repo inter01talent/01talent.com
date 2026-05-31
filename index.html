@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01Talent — International AI-Native Engineers Marketplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --blue:#1A6EFB;--blue-light:#4A8FF5;
+  --blue-faint:rgba(26,110,251,0.07);--blue-border:rgba(26,110,251,0.18);
+  --bg:#F7F9FC;--bg2:#FFFFFF;--bg3:#EDF1F8;
+  --border:rgba(0,0,0,0.08);--text:#0D1530;--muted:#6B7A99;
+}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.logo img{height:38px;width:auto;display:block;}
+nav ul{list-style:none;display:flex;gap:2rem;}
+nav ul a{text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:500;transition:color .2s;}
+nav ul a:hover{color:var(--text);}
+.nav-cta{background:var(--blue);color:#fff !important;padding:9px 22px;border-radius:100px;font-weight:600 !important;font-size:.85rem !important;transition:background .2s,transform .2s !important;}
+.nav-cta:hover{background:var(--blue-light) !important;transform:translateY(-1px);}
+#hero{min-height:100vh;padding:0 6vw;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--bg2);}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(26,110,251,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(26,110,251,0.06) 1px,transparent 1px);background-size:56px 56px;}
+.hero-blob{position:absolute;pointer-events:none;width:650px;height:650px;background:radial-gradient(circle,rgba(26,110,251,0.1) 0%,transparent 68%);top:-80px;right:-80px;}
+.marketplace-headline{font-size:clamp(3.2rem,7vw,6.8rem);font-weight:900;line-height:1.0;letter-spacing:-0.04em;color:var(--text);animation:fadeUp .7s .1s ease both;margin-bottom:20px;}
+.marketplace-headline em{font-style:normal;color:var(--blue);}
+.hero-tagline{font-size:1.05rem;color:var(--muted);font-weight:400;line-height:1.6;animation:fadeUp .7s .15s ease both;}
+.hero-sub{margin-top:22px;font-size:1rem;color:var(--muted);max-width:500px;line-height:1.7;animation:fadeUp .7s .2s ease both;}
+.hero-actions{margin-top:38px;display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .7s .3s ease both;}
+.btn-primary{background:var(--blue);color:#fff;padding:13px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .25s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:var(--blue-light);transform:translateY(-2px);box-shadow:0 10px 28px rgba(26,110,251,0.25);}
+.btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--text);padding:13px 28px;border-radius:100px;text-decoration:none;font-weight:500;font-size:.9rem;transition:all .25s;}
+.btn-ghost:hover{border-color:rgba(0,0,0,0.2);background:var(--bg3);}
+.hero-stats{display:flex;gap:48px;margin-top:64px;flex-wrap:wrap;padding-top:36px;border-top:1px solid var(--border);animation:fadeUp .7s .4s ease both;}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--text);line-height:1;}
+.stat-num span{color:var(--blue);}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:4px;font-weight:500;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+section{padding:96px 6vw;}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+h2{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.03em;color:var(--text);line-height:1.1;}
+h2 em{font-style:normal;color:var(--blue);}
+.section-sub{margin-top:14px;color:var(--muted);max-width:580px;font-size:.92rem;line-height:1.7;}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:32px 28px;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,0.07);border-color:var(--blue-border);}
+.card-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px;}
+.card-desc{color:var(--muted);font-size:.87rem;line-height:1.65;}
+#news{background:var(--bg2);}
+.news-carousel{position:relative;margin-top:48px;}
+.news-track-outer{overflow:hidden;}
+.news-track{display:flex;gap:24px;transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.news-card{flex:0 0 340px;background:var(--bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.news-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,0.08);border-color:var(--blue-border);}
+.news-card-img{width:100%;height:190px;object-fit:cover;}
+.news-card-body{padding:22px;}
+.news-card-tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+.news-card-title{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:8px;}
+.news-card-date{font-size:.75rem;color:var(--muted);margin-bottom:10px;}
+.news-card-desc{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.news-nav{display:flex;gap:10px;margin-top:28px;justify-content:flex-end;}
+.news-nav-btn{width:44px;height:44px;border-radius:50%;background:var(--bg2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;color:var(--text);font-size:1.1rem;}
+.news-nav-btn:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+#what-we-build{background:var(--bg2);}
+.build-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:52px;}
+.build-text p{color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:16px;}
+.build-qualities{display:flex;flex-direction:column;gap:20px;margin-top:32px;}
+.quality-item{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:22px 24px;border-left:3px solid var(--blue);}
+.quality-item strong{display:block;color:var(--text);font-size:.92rem;font-weight:700;margin-bottom:6px;}
+.quality-item span{color:var(--muted);font-size:.84rem;line-height:1.6;}
+#why{background:var(--bg);}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:52px;}
+.why-num{font-size:2rem;font-weight:800;color:var(--blue);opacity:.15;margin-bottom:12px;line-height:1;}
+#partners{padding:72px 0;background:var(--text);overflow:hidden;}
+.partners-track-wrap{overflow:hidden;position:relative;}
+.partners-track-wrap::before,.partners-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.partners-track-wrap::before{left:0;background:linear-gradient(90deg,var(--text),transparent);}
+.partners-track-wrap::after{right:0;background:linear-gradient(-90deg,var(--text),transparent);}
+.partners-track{display:flex;align-items:center;gap:48px;width:max-content;animation:partnerScroll 40s linear infinite;padding:8px 0;}
+.partners-track:hover{animation-play-state:paused;}
+.partner-logo-item{flex-shrink:0;height:52px;display:flex;align-items:center;}
+.partner-logo-item img{height:100%;width:auto;max-width:160px;object-fit:contain;opacity:.75;transition:opacity .3s;}
+.partner-logo-item img:hover{opacity:1;}
+@keyframes partnerScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+#hire{background:var(--bg2);}
+.hire-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:52px;}
+.hire-lead{font-size:1rem;color:var(--muted);line-height:1.75;margin-bottom:36px;}
+.scenario-grid{display:flex;flex-direction:column;gap:16px;}
+.scenario{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .3s;}
+.scenario:hover{border-color:var(--blue-border);}
+.scenario-dot{width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:5px;}
+.scenario-text strong{display:block;color:var(--text);font-size:.92rem;font-weight:700;margin-bottom:4px;}
+.scenario-text span{color:var(--muted);font-size:.84rem;line-height:1.6;}
+#centers{background:var(--bg);}
+.centers-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px;}
+.center-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:28px 20px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;}
+.center-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:center;transition:transform .35s;}
+.center-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,0.08);border-color:var(--blue-border);}
+.center-card:hover::after{transform:scaleX(1);}
+.center-flag{font-size:2.4rem;margin-bottom:14px;line-height:1;}
+.center-name{font-size:.95rem;font-weight:800;color:var(--text);margin-bottom:4px;}
+.center-country{font-size:.78rem;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;}
+.center-stat{font-size:.82rem;color:var(--muted);font-weight:500;}
+.center-stat span{font-size:1.8rem;font-weight:800;color:var(--text);display:block;line-height:1;margin-bottom:4px;}
+.centers-total{margin-top:32px;text-align:center;font-size:1rem;color:var(--muted);font-weight:500;padding:20px;background:var(--blue-faint);border:1px solid var(--blue-border);border-radius:14px;}
+.centers-total span{font-size:1.6rem;font-weight:800;color:var(--blue);margin-right:8px;}
+.academies-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px;}
+.academy-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:20px 16px;text-align:center;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.academy-card:hover{transform:translateY(-4px);border-color:var(--blue-border);box-shadow:0 8px 24px rgba(0,0,0,0.06);}
+.academy-flag{font-size:1.8rem;margin-bottom:10px;line-height:1;}
+.academy-name{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.3;}
+.academy-country{font-size:.72rem;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:.07em;}
+#methodology{background:var(--bg);}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
+.method-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:32px 28px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.method-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,0.07);border-color:var(--blue-border);}
+.method-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.method-card:hover::after{transform:scaleX(1);}
+.method-step{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+.method-title{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:10px;}
+.method-desc{color:var(--muted);font-size:.87rem;line-height:1.65;}
+#platform{background:var(--bg2);}
+.platform-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:52px;}
+.platform-text h3{font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:14px;}
+.platform-text p{color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:16px;}
+.alumni-box{background:var(--blue-faint);border:1px solid var(--blue-border);border-radius:18px;padding:28px;}
+.alumni-label{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+.alumni-sublabel{font-size:.74rem;color:var(--muted);margin-bottom:18px;}
+.alumni-logos{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.alumni-pill{background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:6px 16px;font-size:.82rem;font-weight:600;color:var(--text);}
+.edu-stat-row{display:flex;gap:32px;margin-top:28px;padding-top:24px;border-top:1px solid var(--blue-border);}
+.edu-stat-num{font-size:2rem;font-weight:800;color:var(--blue);line-height:1;}
+.edu-stat-label{font-size:.75rem;color:var(--muted);margin-top:4px;font-weight:500;}
+.footnote{font-size:.72rem;color:var(--muted);margin-top:12px;font-style:italic;line-height:1.5;}
+#expertise{background:var(--bg);}
+.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px;}
+.exp-tag{display:inline-block;background:var(--blue-faint);border-radius:100px;padding:3px 12px;font-size:.7rem;font-weight:700;color:var(--blue);margin-bottom:12px;letter-spacing:.05em;text-transform:uppercase;}
+#process{background:var(--bg2);}
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:52px;position:relative;}
+.process-steps::before{content:'';position:absolute;top:29px;left:22%;right:22%;height:2px;background:repeating-linear-gradient(90deg,var(--blue-border) 0,var(--blue-border) 8px,transparent 8px,transparent 16px);}
+.step{padding:0 24px;text-align:center;}
+.step-num{width:58px;height:58px;background:var(--bg2);border:2px solid var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:var(--blue);margin:0 auto 22px;position:relative;z-index:1;}
+.step-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:10px;}
+.step-desc{color:var(--muted);font-size:.86rem;line-height:1.65;}
+#cta{background:var(--text);position:relative;overflow:hidden;}
+.cta-blob{position:absolute;pointer-events:none;width:500px;height:400px;background:radial-gradient(ellipse,rgba(26,110,251,0.3) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
+.cta-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+#cta .section-label{color:rgba(255,255,255,0.5);}
+#cta h2{color:#fff;margin-bottom:16px;}
+#cta .cta-desc{color:rgba(255,255,255,0.6);font-size:.92rem;line-height:1.7;margin-bottom:28px;}
+.hs-form-wrap{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:32px;}
+.hs-form-wrap .hs-form fieldset{max-width:100% !important;}
+.hs-form-wrap .hs-form .hs-input{width:100% !important;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:11px 14px;font-size:.88rem;color:#fff;font-family:'Montserrat',sans-serif;box-sizing:border-box;}
+.hs-form-wrap .hs-form label{font-size:.72rem;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:6px;}
+.hs-form-wrap .hs-form .hs-form-field{margin-bottom:14px;}
+.hs-form-wrap .hs-form .hs-button{background:var(--blue);color:#fff;border:none;padding:13px 28px;border-radius:100px;font-weight:700;font-size:.9rem;font-family:'Montserrat',sans-serif;cursor:pointer;margin-top:6px;width:100%;transition:background .25s;}
+.hs-form-wrap .hs-form .hs-button:hover{background:var(--blue-light);}
+footer{padding:24px 6vw;background:var(--bg2);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+footer img{height:26px;width:auto;}
+.footer-tagline{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;}
+footer .copy{font-size:.78rem;color:var(--muted);}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){
+  .hero-photo-wrap{display:none !important;}
+  .build-inner,.hire-inner,.platform-inner,.cta-inner{grid-template-columns:1fr;gap:48px;}
+  .method-grid,.expertise-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .process-steps{grid-template-columns:1fr;gap:40px;}
+  .process-steps::before{display:none;}
+  .centers-grid{grid-template-columns:repeat(2,1fr);}
+  .academies-grid{grid-template-columns:repeat(3,1fr);}
+  nav ul{display:none;}
+}
+@media(max-width:560px){
+  .method-grid,.expertise-grid{grid-template-columns:1fr;}
+  section{padding:72px 5vw;}
+  .hero-stats{gap:24px;}
+  .centers-grid{grid-template-columns:1fr;}
+  .academies-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="#" style="display:block;line-height:0;"><img src="images/logo.jpg" alt="01Talent"></a></div>
+  <ul>
+    <li><a href="#what-we-build">What We Build</a></li>
+    <li><a href="#why">Why 01Talent</a></li>
+    <li><a href="#hire">Hire</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#cta" class="nav-cta">Partner With Us</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-blob"></div>
+  <div style="position:relative;z-index:2;width:100%;display:flex;align-items:center;gap:64px;padding-top:80px;">
+    <div style="flex:1;min-width:0;">
+      <div class="marketplace-headline">International<br>AI-Native Engineers<br><em>Marketplace</em></div>
+      <p class="hero-tagline">Your source for the world's best AI-native engineers.</p>
+      <p class="hero-sub">01Talent is the international marketplace connecting digital companies with the world's best AI-native engineers. Trained on the 01Edu platform, available on mission, matched to your stack, operational from day one.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Start a Partnership →</a>
+        <a href="#methodology" class="btn-ghost">How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">14<span>+</span></div><div class="stat-label">Countries with active campuses</div></div>
+        <div><div class="stat-num">500<span>+</span></div><div class="stat-label">Engineers available today</div></div>
+        <div><div class="stat-num">Since <span>2018</span></div><div class="stat-label">Founded</div></div>
+      </div>
+    </div>
+    <div style="flex-shrink:0;width:380px;" class="hero-photo-wrap">
+      <img src="images/hero.jpg" style="width:100%;border-radius:20px;object-fit:cover;height:500px;box-shadow:0 20px 50px rgba(0,0,0,0.1);" alt="01Talent Team">
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="section-label">Latest News</div>
+  <h2>What's happening at <em>01Talent.</em></h2>
+  <p class="section-sub">Partnerships, campus milestones, and events from across our global network.</p>
+  <div class="news-carousel reveal">
+    <div class="news-track-outer">
+      <div class="news-track" id="newsTrack">
+        <div class="news-card">
+          <img class="news-card-img" src="images/news/ausim.jpg" alt="Strategic Partnership with AUSIM Signed at GITEX Africa 2024">
+          <div class="news-card-body">
+            <div class="news-card-tag">Partnership</div>
+            <div class="news-card-title">Strategic Partnership with AUSIM Signed at GITEX Africa 2024</div>
+            <div class="news-card-date">📍 Morocco</div>
+            <div class="news-card-desc">01Talent Morocco will secure access to extraordinary pools of digital talent to AUSIM members across the kingdom.</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <img class="news-card-img" src="images/news/normandie.jpg" alt="01Talent Normandie Launches its Talent Agency Services">
+          <div class="news-card-body">
+            <div class="news-card-tag">Milestone</div>
+            <div class="news-card-title">01Talent Normandie Launches its Talent Agency Services</div>
+            <div class="news-card-date">📍 France</div>
+            <div class="news-card-desc">30 newly trained AI-native developers from Zone01 Rouen start their tech career with 01Talent Normandie.</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <img class="news-card-img" src="images/news/gritlab.jpg" alt="Grit:lab Learners Getting Ready for Their First Job in Tech">
+          <div class="news-card-body">
+            <div class="news-card-tag">Network</div>
+            <div class="news-card-title">Grit:lab Learners Getting Ready for Their First Job in Tech</div>
+            <div class="news-card-date">📍 The Åland Islands</div>
+            <div class="news-card-desc">Grit:lab students complete their 6-month Branches, diving into Video Games, Blockchain, AI, Mobile Development, Cyber Security, and DevOps.</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <img class="news-card-img" src="images/news/reboot.jpg" alt="Reboot01 Learners Reach the Podium at Huawei ICT Global Champions">
+          <div class="news-card-body">
+            <div class="news-card-tag">Achievement</div>
+            <div class="news-card-title">Reboot01 Learners Reach the Podium at Huawei ICT Global Champions</div>
+            <div class="news-card-date">📍 Bahrain</div>
+            <div class="news-card-desc">Reboot01 shines: our engineers secure 2nd place in the Computing Track at the Huawei ICT Global Champions in China.</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <img class="news-card-img" src="images/news/athens.jpg" alt="3rd and Final Selection Piscine at Zone01 Athens">
+          <div class="news-card-body">
+            <div class="news-card-tag">Campus</div>
+            <div class="news-card-title">3rd and Final Selection Piscine at Zone01 Athens</div>
+            <div class="news-card-date">📍 Greece</div>
+            <div class="news-card-desc">Zone01 Athens opens its next Selection Piscine, welcoming a new cohort of future AI-native engineers into the program.</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <img class="news-card-img" src="images/news/dakar.jpg" alt="Zone01 Dakar Engineers Start Their Professional Careers">
+          <div class="news-card-body">
+            <div class="news-card-tag">Deployment</div>
+            <div class="news-card-title">Zone01 Dakar Engineers Start Their Professional Careers</div>
+            <div class="news-card-date">📍 Senegal</div>
+            <div class="news-card-desc">41 full-stack engineers trained in Zone01 Dakar are now embarking on their professional journeys with our partner companies.</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <img class="news-card-img" src="images/news/kisumu.jpg" alt="Zone01 Kisumu Hosts Its Biggest Event Ever">
+          <div class="news-card-body">
+            <div class="news-card-tag">Event</div>
+            <div class="news-card-title">Zone01 Kisumu Hosts Its Biggest Event Ever</div>
+            <div class="news-card-date">📍 Kenya</div>
+            <div class="news-card-desc">19 teams, 100 engineers, and an intensive blockchain hackathon focused on inclusive and sustainable development across East Africa.</div>
+          </div>
+        </div>
+        <div class="news-card">
+          <img class="news-card-img" src="images/news/oujda.jpg" alt="Zone01 Oujda Launches Its First Coding Challenges for Teenagers">
+          <div class="news-card-body">
+            <div class="news-card-tag">Initiative</div>
+            <div class="news-card-title">Zone01 Oujda Launches Its First Coding Challenges for Teenagers</div>
+            <div class="news-card-date">📍 Morocco</div>
+            <div class="news-card-desc">For the first time in Morocco, Zone01 Oujda launches the Juniors Piscine, an intensive coding challenge open to teenagers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="news-nav">
+      <button class="news-nav-btn" onclick="newsSlide(-1)">&#8592;</button>
+      <button class="news-nav-btn" onclick="newsSlide(1)">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<section id="what-we-build">
+  <div class="section-label">What We Build</div>
+  <h2>The best <em>AI-native engineers</em> in the world.</h2>
+  <div class="build-inner reveal">
+    <div class="build-text">
+      <p>Selected from the top 1% of cognitive potential and trained entirely on the 01Edu platform through real-world project delivery, our AI-native engineers enter client teams with skills the open market simply does not carry and a problem-solving mindset that compounds over time.</p>
+      <p>What sets them apart is 24 months of intensive, peer-driven engineering practice across hundreds of real projects, with pure delivery at every stage.</p>
+      <div class="build-qualities">
+        <div class="quality-item"><strong>AI-Native Mindset</strong><span>Built with AI at the core from day one. Every talent thinks, designs, and builds in an AI-first environment as a default, not an afterthought.</span></div>
+        <div class="quality-item"><strong>Technical Depth Across Domains</strong><span>Proficiency in multiple languages and stacks built through depth of practice on 01Edu. Go, Rust, Python, JavaScript, React, Docker, PostgreSQL and more.</span></div>
+        <div class="quality-item"><strong>Built to Learn at Speed</strong><span>The most critical skill in the AI era is knowing how to acquire new skills fast. Our selection process filters for this. Every talent grows with your team and compounds in value over time.</span></div>
+      </div>
+    </div>
+    <div><img src="images/engineer.jpg" style="width:100%;border-radius:20px;object-fit:cover;height:480px;box-shadow:0 12px 36px rgba(0,0,0,0.1);" alt="Engineer"></div>
+  </div>
+</section>
+
+<section id="why">
+  <div style="display:flex;gap:56px;align-items:center;flex-wrap:wrap;margin-bottom:52px;">
+    <div style="flex:1;min-width:280px;">
+      <div class="section-label">Why 01Talent</div>
+      <h2>A talent agency with a <em>proprietary pipeline</em>, exclusive to our network.</h2>
+      <p class="section-sub">01Talent owns the full chain from identification of raw potential to deployment on mission. Every profile has passed our cognitive selection process and trained entirely on the 01Edu platform.</p>
+    </div>
+    <img src="images/method.jpg" style="width:300px;height:220px;object-fit:cover;border-radius:18px;box-shadow:0 8px 28px rgba(0,0,0,0.1);flex-shrink:0;" alt="Training">
+  </div>
+  <div class="why-grid reveal">
+    <div class="card"><div class="why-num">01</div><div class="card-title">An Exclusive Talent Pool</div><div class="card-desc">Our AI-native engineers are selected, trained on 01Edu, and deployed through 01Talent. You access profiles that the open market simply cannot provide.</div></div>
+    <div class="card"><div class="why-num">02</div><div class="card-title">Selection That Outperforms Credentials</div><div class="card-desc">Built on 01Edu's cognitive selection model, we identify top potential regardless of academic background. The result is a pool of AI-native engineers overlooked by traditional hiring and now among the best in their field.</div></div>
+    <div class="card"><div class="why-num">03</div><div class="card-title">Global Reach, Immediate Availability</div><div class="card-desc">500+ AI-native engineers available across 14+ countries. Full-time or part-time, on mission through 01Talent, matched to your specific stack and organizational goals.</div></div>
+    <div class="card"><div class="why-num">04</div><div class="card-title">Zero Ramp-Up Time</div><div class="card-desc">Every talent arrives deployment-ready after 24 months of hands-on practice on 01Edu. Your teams are reinforced immediately with professionals who deliver from day one.</div></div>
+  </div>
+</section>
+
+<section id="partners" style="padding:72px 0;background:var(--text);overflow:hidden;">
+  <div style="padding:0 6vw;margin-bottom:40px;">
+    <div class="section-label" style="color:rgba(255,255,255,0.45);">Our Partners</div>
+    <h2 style="color:#fff;">Trusted by <em>leading organizations</em> worldwide.</h2>
+  </div>
+  <div class="partners-track-wrap">
+    <div class="partners-track">
+      <div class="partner-logo-item"><img src="images/partners/deloitte.jpg" alt="Deloitte" style="filter:brightness(0) invert(1);" title="Deloitte"></div>
+<div class="partner-logo-item"><img src="images/partners/horizont.jpg" alt="Horizont" style="" title="Horizont"></div>
+<div class="partner-logo-item"><img src="images/partners/mastercard.jpg" alt="Mastercard Foundation" style="" title="Mastercard Foundation"></div>
+<div class="partner-logo-item"><img src="images/partners/cleyrop.jpg" alt="Cleyrop" style="" title="Cleyrop"></div>
+<div class="partner-logo-item"><img src="images/partners/deepsea.jpg" alt="DeepSea" style="" title="DeepSea"></div>
+<div class="partner-logo-item"><img src="images/partners/snyk.jpg" alt="Snyk" style="" title="Snyk"></div>
+<div class="partner-logo-item"><img src="images/partners/credit-agricole.jpg" alt="Crédit Agricole" style="filter:brightness(0) invert(1);" title="Crédit Agricole"></div>
+<div class="partner-logo-item"><img src="images/partners/pandas.jpg" alt="Pandas" style="" title="Pandas"></div>
+<div class="partner-logo-item"><img src="images/partners/lakehub.jpg" alt="LakeHub" style="" title="LakeHub"></div>
+<div class="partner-logo-item"><img src="images/partners/jokkolabs.jpg" alt="Jokkolabs" style="" title="Jokkolabs"></div>
+<div class="partner-logo-item"><img src="images/partners/univ-mohammed.jpg" alt="Université Mohammed I" style="" title="Université Mohammed I"></div>
+<div class="partner-logo-item"><img src="images/partners/capital-city-college.jpg" alt="Capital City College" style="filter:brightness(0) invert(1);" title="Capital City College"></div>
+<div class="partner-logo-item"><img src="images/partners/cglu.jpg" alt="UCLG Africa" style="" title="UCLG Africa"></div>
+<div class="partner-logo-item"><img src="images/partners/founders-forum.jpg" alt="Founders Forum" style="filter:brightness(0) invert(1);" title="Founders Forum"></div>
+<div class="partner-logo-item"><img src="images/partners/future-africa.jpg" alt="Future Africa" style="filter:brightness(0) invert(1);" title="Future Africa"></div>
+<div class="partner-logo-item"><img src="images/partners/smart-africa.jpg" alt="Smart Africa" style="filter:brightness(0) invert(1);" title="Smart Africa"></div>
+<div class="partner-logo-item"><img src="images/partners/royaume-maroc.jpg" alt="Royaume du Maroc" style="filter:brightness(0) invert(1);" title="Royaume du Maroc"></div>
+<div class="partner-logo-item"><img src="images/partners/council-governors.jpg" alt="Council of Governors" style="filter:brightness(0) invert(1);" title="Council of Governors"></div>
+<div class="partner-logo-item"><img src="images/partners/region-oriental.jpg" alt="Région de l'Oriental" style="filter:brightness(0) invert(1);" title="Région de l'Oriental"></div>
+<div class="partner-logo-item"><img src="images/partners/ddf.jpg" alt="DDF" style="filter:brightness(0) invert(1);" title="DDF"></div>
+<div class="partner-logo-item"><img src="images/partners/deloitte.jpg" alt="Deloitte" style="filter:brightness(0) invert(1);" title="Deloitte"></div>
+<div class="partner-logo-item"><img src="images/partners/horizont.jpg" alt="Horizont" style="" title="Horizont"></div>
+<div class="partner-logo-item"><img src="images/partners/mastercard.jpg" alt="Mastercard Foundation" style="" title="Mastercard Foundation"></div>
+<div class="partner-logo-item"><img src="images/partners/cleyrop.jpg" alt="Cleyrop" style="" title="Cleyrop"></div>
+<div class="partner-logo-item"><img src="images/partners/deepsea.jpg" alt="DeepSea" style="" title="DeepSea"></div>
+<div class="partner-logo-item"><img src="images/partners/snyk.jpg" alt="Snyk" style="" title="Snyk"></div>
+<div class="partner-logo-item"><img src="images/partners/credit-agricole.jpg" alt="Crédit Agricole" style="filter:brightness(0) invert(1);" title="Crédit Agricole"></div>
+<div class="partner-logo-item"><img src="images/partners/pandas.jpg" alt="Pandas" style="" title="Pandas"></div>
+<div class="partner-logo-item"><img src="images/partners/lakehub.jpg" alt="LakeHub" style="" title="LakeHub"></div>
+<div class="partner-logo-item"><img src="images/partners/jokkolabs.jpg" alt="Jokkolabs" style="" title="Jokkolabs"></div>
+<div class="partner-logo-item"><img src="images/partners/univ-mohammed.jpg" alt="Université Mohammed I" style="" title="Université Mohammed I"></div>
+<div class="partner-logo-item"><img src="images/partners/capital-city-college.jpg" alt="Capital City College" style="filter:brightness(0) invert(1);" title="Capital City College"></div>
+<div class="partner-logo-item"><img src="images/partners/cglu.jpg" alt="UCLG Africa" style="" title="UCLG Africa"></div>
+<div class="partner-logo-item"><img src="images/partners/founders-forum.jpg" alt="Founders Forum" style="filter:brightness(0) invert(1);" title="Founders Forum"></div>
+<div class="partner-logo-item"><img src="images/partners/future-africa.jpg" alt="Future Africa" style="filter:brightness(0) invert(1);" title="Future Africa"></div>
+<div class="partner-logo-item"><img src="images/partners/smart-africa.jpg" alt="Smart Africa" style="filter:brightness(0) invert(1);" title="Smart Africa"></div>
+<div class="partner-logo-item"><img src="images/partners/royaume-maroc.jpg" alt="Royaume du Maroc" style="filter:brightness(0) invert(1);" title="Royaume du Maroc"></div>
+<div class="partner-logo-item"><img src="images/partners/council-governors.jpg" alt="Council of Governors" style="filter:brightness(0) invert(1);" title="Council of Governors"></div>
+<div class="partner-logo-item"><img src="images/partners/region-oriental.jpg" alt="Région de l'Oriental" style="filter:brightness(0) invert(1);" title="Région de l'Oriental"></div>
+<div class="partner-logo-item"><img src="images/partners/ddf.jpg" alt="DDF" style="filter:brightness(0) invert(1);" title="DDF"></div>
+    </div>
+  </div>
+</section>
+
+<section id="hire">
+  <div class="section-label">Hire</div>
+  <h2>The right engineers, <em>right now.</em></h2>
+  <div class="hire-inner reveal">
+    <div>
+      <p class="hire-lead">The AI transformation is restructuring every tech team, every product roadmap, every hiring decision. 01Talent gives you immediate access to a curated pool of AI-native engineers, ready to integrate and contribute from day one.</p>
+      <a href="#cta" class="btn-primary">Find Your Engineers →</a>
+    </div>
+    <div class="scenario-grid">
+      <div class="scenario"><div class="scenario-dot"></div><div class="scenario-text"><strong>Reinforce an Existing Team</strong><span>You need specific AI-native profiles to accelerate a product or close a skill gap. We match and deploy the right talent within days.</span></div></div>
+      <div class="scenario"><div class="scenario-dot"></div><div class="scenario-text"><strong>Build a New Capability</strong><span>You are entering a new technical domain: AI, blockchain, data infrastructure. We provide engineers who have already built in that space.</span></div></div>
+      <div class="scenario"><div class="scenario-dot"></div><div class="scenario-text"><strong>Scale on Demand</strong><span>Your roadmap grows faster than your headcount. We supply vetted AI-native engineers on flexible missions so you scale with speed and flexibility.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="centers">
+  <div class="section-label">Offshoring Centers</div>
+  <h2>Where our <em>AI-native engineers</em> are trained and deployed.</h2>
+  <p class="section-sub">Five Zone01 campuses across three continents. Each center trains talent locally and deploys globally on mission through 01Talent.</p>
+  <div class="centers-grid reveal">
+    <div class="center-card"><div class="center-flag">🇬🇷</div><div class="center-name">Zone01 Athens</div><div class="center-country">Greece</div><div class="center-stat"><span>120</span>talents available</div></div>
+    <div class="center-card"><div class="center-flag">🇲🇦</div><div class="center-name">Zone01 Oujda</div><div class="center-country">Morocco</div><div class="center-stat"><span>250</span>talents available</div></div>
+    <div class="center-card"><div class="center-flag">🇰🇪</div><div class="center-name">Zone01 Kisumu</div><div class="center-country">Kenya</div><div class="center-stat"><span>150</span>talents available</div></div>
+    <div class="center-card"><div class="center-flag">🇸🇳</div><div class="center-name">Zone01 Dakar</div><div class="center-country">Senegal</div><div class="center-stat"><span>95</span>talents available</div></div>
+    <div class="center-card"><div class="center-flag">🇫🇷</div><div class="center-name">Zone01 Rouen</div><div class="center-country">France</div><div class="center-stat"><span>100</span>talents available</div></div>
+  </div>
+  <div class="centers-total reveal"><span>715</span>AI-native engineers available across 5 centers today.</div>
+</section>
+
+<section id="academies" style="background:var(--bg2);padding-top:0;padding-bottom:96px;">
+  <div style="border-top:1px solid var(--border);padding-top:64px;">
+    <div class="section-label">01Network Partner Academies</div>
+    <h2>A growing <em>global network</em> of partner campuses.</h2>
+    <p class="section-sub">Beyond our own centers, 01Talent draws from a network of partner academies trained on the 01Edu platform across 4 continents.</p>
+    <div class="academies-grid reveal">
+    <div class="academy-card">
+      <div class="academy-flag">🇧🇭</div>
+      <div class="academy-name">Reboot01</div>
+      <div class="academy-country">Bahrain</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇫🇮</div>
+      <div class="academy-name">grit:lab</div>
+      <div class="academy-country">Finland</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇮🇱</div>
+      <div class="academy-name">adam: Coding & Beyond</div>
+      <div class="academy-country">Israel</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇬🇧</div>
+      <div class="academy-name">01Founders</div>
+      <div class="academy-country">United Kingdom</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇪🇬</div>
+      <div class="academy-name">NextEra</div>
+      <div class="academy-country">Egypt</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇳🇬</div>
+      <div class="academy-name">Learn2Earn</div>
+      <div class="academy-country">Nigeria</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇰🇿</div>
+      <div class="academy-name">Tomorrow School</div>
+      <div class="academy-country">Kazakhstan</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇰🇿</div>
+      <div class="academy-name">Yessenov Technopark</div>
+      <div class="academy-country">Kazakhstan</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇮🇳</div>
+      <div class="academy-name">Posspole Catalyst</div>
+      <div class="academy-country">India</div>
+    </div>
+    <div class="academy-card">
+      <div class="academy-flag">🇫🇷</div>
+      <div class="academy-name">Ynov</div>
+      <div class="academy-country">France</div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="methodology">
+  <div style="display:flex;gap:56px;align-items:center;margin-bottom:52px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:280px;">
+      <div class="section-label">Our Methodology</div>
+      <h2>The AI-Native Engineering <em>Talent Agency.</em></h2>
+      <p class="section-sub">A three-pillar system designed to deliver elite AI-native engineers at scale, anywhere, anytime.</p>
+    </div>
+    <img src="images/learning.jpg" style="width:300px;height:220px;object-fit:cover;border-radius:18px;box-shadow:0 8px 28px rgba(0,0,0,0.1);flex-shrink:0;" alt="Learning">
+  </div>
+  <div class="method-grid reveal">
+    <div class="method-card"><div class="method-step">01 — Identify</div><div class="method-title">Extreme Selectivity</div><div class="method-desc">Highly competitive cognitive ability and resilience screening. Only the top 1% of potential enters our program, regardless of background or diploma.</div></div>
+    <div class="method-card"><div class="method-step">02 — Train</div><div class="method-title">24 Months on 01Edu</div><div class="method-desc">The entire training takes place on the 01Edu platform. No lectures, no grades. 24 months of project-based delivery across 100+ real-world engineering challenges, including 6 months of specialized tracks.</div></div>
+    <div class="method-card"><div class="method-step">03 — Deploy</div><div class="method-title">Global Deployment</div><div class="method-desc">Operational talent delivered at scale. On mission through 01Talent, full-time or part-time, perfectly matched to your stack and culture.</div></div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="section-label">Expertise</div>
+  <h2>Tailored to the needs of <em>digital companies.</em></h2>
+  <p class="section-sub">Technologies specific to partner companies can be integrated directly into the 01Edu curriculum. Every talent arrives pre-trained on your environment.</p>
+  <div class="expertise-grid reveal">
+    <div class="card"><div class="exp-tag">AI · Data · Cyber</div><div class="card-title">AI / Data / Cybersecurity</div><div class="card-desc">Intelligent systems, data pipelines, and security engineering built for the modern threat landscape.</div></div>
+    <div class="card"><div class="exp-tag">Design · Hardware</div><div class="card-title">UI/UX / IoT / Robotics</div><div class="card-desc">User-centered design and connected hardware for products people use and trust.</div></div>
+    <div class="card"><div class="exp-tag">Infrastructure</div><div class="card-title">Cloud / Mobile / Web</div><div class="card-desc">Full-stack, scalable architectures ready for global-scale deployment.</div></div>
+    <div class="card"><div class="exp-tag">Decentralized</div><div class="card-title">Blockchain</div><div class="card-desc">Decentralized systems and distributed architectures for next-generation applications.</div></div>
+    <div class="card"><div class="exp-tag">Legacy · Critical</div><div class="card-title">Custom Software</div><div class="card-desc">Rebuilding and evolving legacy critical systems with modern engineering practices and an AI-native approach.</div></div>
+    <div class="card" style="background:var(--blue-faint);border-color:var(--blue-border);"><div class="exp-tag">Bespoke</div><div class="card-title">Your Stack</div><div class="card-desc">Partner-specific technologies integrated directly into the 01Edu curriculum. Every talent pre-trained for your exact environment before they arrive.</div></div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-label">How It Works</div>
+  <h2>From <em>brief</em> to <em>deployment.</em></h2>
+  <p class="section-sub" style="margin-bottom:0;">A streamlined three-step journey designed to be fast, precise, and partnership-driven.</p>
+  <div class="process-steps reveal">
+    <div class="step"><div class="step-num">1</div><div class="step-title">Brief</div><div class="step-desc">You define your need: skills, tech stack, volume, timeline. We identify and qualify matching profiles from our talent pool.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-title">Match</div><div class="step-desc">You meet pre-vetted, deployment-ready AI-native engineers. Only profiles that have passed our technical and behavioral qualification reach this stage.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-title">Deploy</div><div class="step-desc">Your talent joins your team on mission through 01Talent. Flexible engagement, short or long term. Ongoing support throughout the mission.</div></div>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="section-label">The 01Edu Platform</div>
+  <h2>A <em>radically different</em> learning model.</h2>
+  <div class="platform-inner reveal">
+    <div class="platform-text">
+      <h3>No lectures. No teachers. No grades.</h3>
+      <p>All training takes place on the 01Edu platform, built by Nicolas Sadirac. The peer-to-peer model best combines human and AI capacities to create superior efficiency from day one on the job. Every talent selects their own projects, builds a unique skills profile, and delivers real work at every stage.</p>
+      <p>Partner-specific technologies can be integrated directly into the 01Edu curriculum, ensuring every talent deployed for you arrives pre-trained on your exact environment.</p>
+      <div class="edu-stat-row">
+        <div><div class="edu-stat-num">14</div><div class="edu-stat-label">Countries</div></div>
+        <div><div class="edu-stat-num">35</div><div class="edu-stat-label">Active campuses</div></div>
+        <div><div class="edu-stat-num">24</div><div class="edu-stat-label">Months of training</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="alumni-box">
+        <div class="alumni-label">100,000+ Alumni Trained by Nicolas Sadirac's Pedagogy*</div>
+        <div class="alumni-sublabel">Since 2012, hired by leading global companies</div>
+        <div class="alumni-logos">
+          <span class="alumni-pill">Apple</span><span class="alumni-pill">Google</span><span class="alumni-pill">Amazon</span><span class="alumni-pill">PayPal</span><span class="alumni-pill">Ubisoft</span><span class="alumni-pill">Total Direct Énergie</span>
+        </div>
+        <p class="footnote">*25,000+ alumni have attended Nicolas Sadirac's schools directly. 100,000+ including derivative schools using his pedagogic model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-blob"></div>
+  <div class="cta-inner">
+    <div>
+      <div class="section-label">Partner With Us</div>
+      <h2>Secure your <em>AI-native</em> engineering pipeline.</h2>
+      <p class="cta-desc">AI-native engineers are scarce. 01Talent gives you access to a curated pool of elite talent, vetted, trained on 01Edu, and ready to contribute from day one.</p>
+      <a href="#cta" class="btn-primary" style="display:inline-flex;">Start a Partnership →</a>
+    </div>
+    <div>
+      <div class="hs-form-wrap">
+        <div id="hs-cta-form"></div>
+      </div>
+      <script>
+        hbspt.forms.create({
+          portalId: "25483699",
+          formId: "e004571d-7fa0-4724-8bfb-c0130794c9fa",
+          region: "eu1",
+          target: "#hs-cta-form"
+        });
+      </script>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="images/logo.jpg" alt="01Talent">
+  <div class="footer-tagline">Recode Our World With Talent</div>
+  <div class="copy">© 2025 01Talent. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  let newsPos = 0;
+  function newsSlide(dir) {
+    const track = document.getElementById('newsTrack');
+    const cards = track.querySelectorAll('.news-card');
+    const cardW = cards[0].offsetWidth + 24;
+    const visible = Math.floor(track.parentElement.offsetWidth / cardW);
+    const max = cards.length - visible;
+    newsPos = Math.max(0, Math.min(max, newsPos + dir));
+    track.style.transform = 'translateX(-' + (newsPos * cardW) + 'px)';
+  }
+</script>
+</body>
+</html>
