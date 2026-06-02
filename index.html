@@ -75,15 +75,15 @@ h2 em{font-style:normal;color:var(--blue);}
 #why{background:var(--bg);}
 .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:52px;}
 .why-num{font-size:2rem;font-weight:800;color:var(--blue);opacity:.15;margin-bottom:12px;line-height:1;}
-#partners{padding:72px 0;background:var(--text);overflow:hidden;}
+#partners{padding:72px 0;background:var(--bg3);overflow:hidden;}
 .partners-track-wrap{overflow:hidden;position:relative;}
 .partners-track-wrap::before,.partners-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
-.partners-track-wrap::before{left:0;background:linear-gradient(90deg,var(--text),transparent);}
-.partners-track-wrap::after{right:0;background:linear-gradient(-90deg,var(--text),transparent);}
+.partners-track-wrap::before{left:0;background:linear-gradient(90deg,var(--bg3),transparent);}
+.partners-track-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg3),transparent);}
 .partners-track{display:flex;align-items:center;gap:48px;width:max-content;animation:partnerScroll 40s linear infinite;padding:8px 0;}
 .partners-track:hover{animation-play-state:paused;}
 .partner-logo-item{flex-shrink:0;height:52px;width:160px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.partner-logo-item img{height:100%;width:auto;max-width:160px;object-fit:contain;opacity:.75;transition:opacity .3s;filter:brightness(0) invert(1);}
+.partner-logo-item img{height:100%;width:auto;max-width:160px;object-fit:contain;opacity:.75;transition:opacity .3s;}
 .partner-logo-item img:hover{opacity:1;}
 .partner-logo-item img:not([src]),.partner-logo-item img[src=""]{display:none;}
 .partner-logo-item img::after{display:none;}
@@ -347,10 +347,10 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   </div>
 </section>
 
-<section id="partners" style="padding:72px 0;background:var(--text);overflow:hidden;">
+<section id="partners" style="padding:72px 0;background:var(--bg3);overflow:hidden;">
   <div style="padding:0 6vw;margin-bottom:40px;">
-    <div class="section-label" style="color:rgba(255,255,255,0.45);">Our Partners</div>
-    <h2 style="color:#fff;">Trusted by <em>leading organizations</em> worldwide.</h2>
+    <div class="section-label" style="color:var(--muted);">Our Partners</div>
+    <h2 style="color:var(--text);">Trusted by <em>leading organizations</em> worldwide.</h2>
   </div>
   <div class="partners-track-wrap">
     <div class="partners-track">
