@@ -94,19 +94,29 @@ h2 em{font-style:normal;color:var(--blue);}
 .card-desc{color:var(--muted);font-size:.87rem;line-height:1.65;}
 #news{background:var(--bg2);}
 .news-carousel{position:relative;margin-top:48px;}
-.news-track-outer{overflow:hidden;}
-.news-track{display:flex;gap:24px;transition:transform .5s cubic-bezier(.4,0,.2,1);}
-.news-card{flex:0 0 340px;background:var(--bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;}
-.news-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,0.08);border-color:var(--blue-border);}
-.news-card-img{width:100%;height:190px;object-fit:cover;}
-.news-card-body{padding:22px;}
+.news-track-outer{overflow:hidden;position:relative;}
+.news-track-outer::before,.news-track-outer::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.news-track-outer::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent);}
+.news-track-outer::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent);}
+.news-track{display:flex;gap:28px;transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.news-card{flex:0 0 480px;background:var(--bg);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;}
+.news-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.1);border-color:var(--blue-border);}
+.news-card-img{width:100%;height:260px;object-fit:cover;}
+.news-card-body{padding:28px;}
 .news-card-tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
-.news-card-title{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:8px;}
-.news-card-date{font-size:.75rem;color:var(--muted);margin-bottom:10px;}
-.news-card-desc{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.news-card-title{font-size:1.05rem;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:10px;}
+.news-card-date{font-size:.75rem;color:var(--muted);margin-bottom:12px;}
+.news-card-desc{font-size:.86rem;color:var(--muted);line-height:1.65;}
+
 .news-nav{display:flex;gap:10px;margin-top:28px;justify-content:flex-end;}
 .news-nav-btn{width:44px;height:44px;border-radius:50%;background:var(--bg2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;color:var(--text);font-size:1.1rem;}
 .news-nav-btn:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.lightbox.active{display:flex;}
+.lightbox-img{max-width:90vw;max-height:88vh;border-radius:16px;box-shadow:0 32px 80px rgba(0,0,0,0.5);object-fit:contain;}
+.lightbox-close{position:absolute;top:24px;right:28px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.lightbox-close:hover{background:rgba(255,255,255,0.25);}
 #what-we-build{background:var(--bg2);}
 .build-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:52px;}
 .build-text p{color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:16px;}
@@ -222,7 +232,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   .hero-actions{flex-direction:column;}
   .hero-stats{flex-wrap:wrap;gap:28px;}
   .edu-stat-row{flex-wrap:wrap;gap:20px;}
-  .news-card{flex:0 0 280px;}
+  .news-card{flex:0 0 340px;}
 }
 @media(max-width:560px){
   .method-grid,.expertise-grid{grid-template-columns:1fr;}
@@ -235,7 +245,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   .btn-primary,.btn-ghost{width:100%;justify-content:center;}
   .stat-num{font-size:1.8rem;}
   .cta-inner{grid-template-columns:1fr;}
-  .news-card{flex:0 0 260px;}
+  .news-card{flex:0 0 300px;}
   .partner-logo-item{height:70px;width:150px;}
 }
 </style>
@@ -520,6 +530,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   <div class="news-carousel reveal">
     <div class="news-track-outer">
       <div class="news-track" id="newsTrack">
+        <!-- Original set -->
         <div class="news-card">
           <img class="news-card-img" loading="lazy" src="images/news/news1.png" alt="New 2026 Cohort Launches at Zone01 Rouen">
           <div class="news-card-body">
@@ -574,6 +585,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
             <div class="news-card-desc">This new event cycle began in May 2026, to connect campus learners directly with leading UK tech startup founders. Discussions focus on real-world scaling challenges, venture capital fundraising, and the operational impact of AI.</div>
           </div>
         </div>
+        <!-- Duplicate set for seamless infinite loop -->
       </div>
     </div>
     <div class="news-nav">
@@ -582,6 +594,12 @@ footer .copy{font-size:.78rem;color:var(--muted);}
     </div>
   </div>
 </section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&#215;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
 
 <section id="faq" style="background:var(--bg);">
   <div class="section-label">FAQ</div>
@@ -757,12 +775,30 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   function newsSlide(dir) {
     const track = document.getElementById('newsTrack');
     const cards = track.querySelectorAll('.news-card');
-    const cardW = cards[0].offsetWidth + 24;
+    const cardW = cards[0].offsetWidth + 28;
     const visible = Math.floor(track.parentElement.offsetWidth / cardW);
     const max = cards.length - visible;
     newsPos = Math.max(0, Math.min(max, newsPos + dir));
     track.style.transform = 'translateX(-' + (newsPos * cardW) + 'px)';
   }
+  // Lightbox — works on every <img> on the page
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLightbox(e) {
+    if (e && e.target === lightboxImg) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>
