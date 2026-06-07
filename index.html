@@ -95,9 +95,7 @@ h2 em{font-style:normal;color:var(--blue);}
 #news{background:var(--bg2);}
 .news-carousel{position:relative;margin-top:48px;}
 .news-track-outer{overflow:hidden;position:relative;}
-.news-track-outer::before,.news-track-outer::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
-.news-track-outer::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent);}
-.news-track-outer::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent);}
+.news-track-outer::after{content:'';position:absolute;top:0;bottom:0;right:0;width:80px;z-index:2;pointer-events:none;background:linear-gradient(-90deg,var(--bg2),transparent);}
 .news-track{display:flex;gap:28px;transition:transform .5s cubic-bezier(.4,0,.2,1);}
 .news-card{flex:0 0 480px;background:var(--bg);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;}
 .news-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.1);border-color:var(--blue-border);}
@@ -108,9 +106,10 @@ h2 em{font-style:normal;color:var(--blue);}
 .news-card-date{font-size:.75rem;color:var(--muted);margin-bottom:12px;}
 .news-card-desc{font-size:.86rem;color:var(--muted);line-height:1.65;}
 
-.news-nav{display:flex;gap:10px;margin-top:28px;justify-content:flex-end;}
-.news-nav-btn{width:44px;height:44px;border-radius:50%;background:var(--bg2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;color:var(--text);font-size:1.1rem;}
+.news-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;color:var(--text);font-size:1.2rem;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,0.12);}
 .news-nav-btn:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+.news-nav-btn.prev{left:-24px;}
+.news-nav-btn.next{right:-24px;}
 /* Lightbox */
 .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;backdrop-filter:blur(6px);}
 .lightbox.active{display:flex;}
@@ -528,6 +527,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   <h2>What's happening at <em>01Talent.</em></h2>
   <p class="section-sub">Partnerships, campus milestones, and events from across our global network.</p>
   <div class="news-carousel reveal">
+    <button class="news-nav-btn prev" onclick="newsSlide(-1)">&#8592;</button>
     <div class="news-track-outer">
       <div class="news-track" id="newsTrack">
         <!-- Original set -->
@@ -588,10 +588,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
         <!-- Duplicate set for seamless infinite loop -->
       </div>
     </div>
-    <div class="news-nav">
-      <button class="news-nav-btn" onclick="newsSlide(-1)">&#8592;</button>
-      <button class="news-nav-btn" onclick="newsSlide(1)">&#8594;</button>
-    </div>
+    <button class="news-nav-btn next" onclick="newsSlide(1)">&#8594;</button>
   </div>
 </section>
 
@@ -775,10 +772,10 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   function newsSlide(dir) {
     const track = document.getElementById('newsTrack');
     const cards = track.querySelectorAll('.news-card');
+    const total = cards.length;
     const cardW = cards[0].offsetWidth + 28;
-    const visible = Math.floor(track.parentElement.offsetWidth / cardW);
-    const max = cards.length - visible;
-    newsPos = Math.max(0, Math.min(max, newsPos + dir));
+    const visible = Math.max(1, Math.floor(track.parentElement.offsetWidth / cardW));
+    newsPos = ((newsPos + dir) % total + total) % total;
     track.style.transform = 'translateX(-' + (newsPos * cardW) + 'px)';
   }
   // Lightbox — works on every <img> on the page
