@@ -252,7 +252,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
 <body id="top">
 
 <nav>
-  <div class="logo"><a href="#top" style="display:block;line-height:0;"><img src="images/logo.png" alt="01Talent"></a></div>
+  <div class="logo"><a href="#top" style="display:block;line-height:0;"><img src="images/logo.png" alt="01Talent" data-no-lightbox></a></div>
   <ul>
     <li><a href="#why">Why 01Talent</a></li>
     <li><a href="#hire">Hire</a></li>
@@ -781,7 +781,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   // Lightbox — works on every <img> on the page
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  document.querySelectorAll('img').forEach(img => {
+  document.querySelectorAll('img:not([data-no-lightbox])').forEach(img => {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => {
       lightboxImg.src = img.src;
