@@ -782,7 +782,8 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   document.querySelectorAll('img:not([data-no-lightbox])').forEach(img => {
-    img.style.cursor = 'zoom-in';
+    if (img.closest('.partner-logo-item')) return;
+    img.style.cursor = 'hand';
     img.addEventListener('click', () => {
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt || '';
