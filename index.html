@@ -818,6 +818,8 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   function closeLightbox(e) {
     if (e && e.target === lightboxImg) return;
     lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
@@ -834,8 +836,6 @@ footer .copy{font-size:.78rem;color:var(--muted);}
       hamburger.setAttribute('aria-expanded', false);
     });
   });
-    document.body.style.overflow = '';
-  }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
