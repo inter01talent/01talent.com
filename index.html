@@ -162,7 +162,7 @@ h2 em{font-style:normal;color:var(--blue);}
 .center-stat span{font-size:1.8rem;font-weight:800;color:var(--text);display:block;line-height:1;margin-bottom:4px;}
 .centers-total{margin-top:32px;text-align:center;font-size:1rem;color:var(--muted);font-weight:500;padding:20px;background:var(--blue-faint);border:1px solid var(--blue-border);border-radius:14px;}
 .centers-total span{font-size:1.6rem;font-weight:800;color:var(--blue);margin-right:8px;}
-.academies-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px;}
+.academies-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:40px;}.academy-card{flex:0 0 calc(25% - 11px);}
 .academy-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:20px 16px;text-align:center;transition:transform .25s,border-color .25s,box-shadow .25s;}
 .academy-card:hover{transform:translateY(-4px);border-color:var(--blue-border);box-shadow:0 8px 24px rgba(0,0,0,0.06);}
 .academy-flag{font-size:1.8rem;margin-bottom:10px;line-height:1;}
@@ -227,7 +227,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   .process-steps{grid-template-columns:1fr;gap:40px;}
   .process-steps::before{display:none;}
   .centers-grid{grid-template-columns:repeat(2,1fr);}
-  .academies-grid{grid-template-columns:repeat(3,1fr);}
+  .academies-grid{}.academy-card{flex:0 0 calc(33.333% - 10px);}
   nav ul{display:none;}
   .hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;}
   .hamburger span{display:block;height:2px;width:24px;background:var(--text);border-radius:2px;transition:all .25s;}
@@ -250,7 +250,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   section{padding:64px 5vw;}
   .hero-stats{gap:20px;}
   .centers-grid{grid-template-columns:1fr;}
-  .academies-grid{grid-template-columns:repeat(2,1fr);}
+  .academy-card{flex:0 0 calc(50% - 7px);}
   .marketplace-headline{font-size:clamp(2.4rem,10vw,3.2rem);}
   .hero-actions{flex-direction:column;align-items:flex-start;}
   .btn-primary,.btn-ghost{width:100%;justify-content:center;}
@@ -502,11 +502,7 @@ footer .copy{font-size:.78rem;color:var(--muted);}
       <div class="academy-name">grit:lab</div>
       <div class="academy-country">Åland</div>
     </div>
-    <div class="academy-card">
-      <div class="academy-flag">🇮🇳</div>
-      <div class="academy-name">Posspole Catalyst</div>
-      <div class="academy-country">India</div>
-    </div>
+
     <div class="academy-card">
       <div class="academy-flag">🇬🇧</div>
       <div class="academy-name">01Founders</div>
@@ -527,16 +523,8 @@ footer .copy{font-size:.78rem;color:var(--muted);}
       <div class="academy-name">Tomorrow School</div>
       <div class="academy-country">Kazakhstan</div>
     </div>
-    <div class="academy-card">
-      <div class="academy-flag">🇰🇿</div>
-      <div class="academy-name">Yessenov Technopark</div>
-      <div class="academy-country">Kazakhstan</div>
-    </div>
-    <div class="academy-card">
-      <div class="academy-flag">🇮🇱</div>
-      <div class="academy-name">adam: Coding & Beyond</div>
-      <div class="academy-country">Israel</div>
-    </div>
+
+
     <div class="academy-card">
       <div class="academy-flag">🇫🇷</div>
       <div class="academy-name">Ynov</div>
@@ -838,9 +826,5 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
-  
-<script src="https://cdn.jsdelivr.net/npm/twemoji@14/dist/twemoji.min.js"></script>
-<script>twemoji.parse(document.body);</script>
-  
 </body>
 </html>
