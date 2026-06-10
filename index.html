@@ -50,12 +50,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js" defer></script>
 <style>
-img.emoji {
-  height: 1em;
-  width: 1em;
-  vertical-align: -0.1em;
-  display: inline;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 :root{
   --blue:#1A6EFB;--blue-light:#4A8FF5;
@@ -349,20 +344,6 @@ footer .copy{font-size:.78rem;color:var(--muted);}
   </div>
 </section>
 
-<section id="centers">
-  <div class="section-label">Offshoring Centers</div>
-  <h2>Where our <em>AI-native engineers</em> are trained and deployed.</h2>
-  <p class="section-sub">Five Zone01 campuses across three continents. Each center trains talent locally and deploys globally on mission through 01Talent.</p>
-  <div class="centers-grid reveal">
-    <div class="center-card"><div class="center-flag">🇬🇷</div><div class="center-name">Zone01 Athens</div><div class="center-country">Greece</div><div class="center-stat"><span>120</span>talents available</div></div>
-    <div class="center-card"><div class="center-flag">🇲🇦</div><div class="center-name">Zone01 Oujda</div><div class="center-country">Morocco</div><div class="center-stat"><span>250</span>talents available</div></div>
-    <div class="center-card"><div class="center-flag">🇰🇪</div><div class="center-name">Zone01 Kisumu</div><div class="center-country">Kenya</div><div class="center-stat"><span>150</span>talents available</div></div>
-    <div class="center-card"><div class="center-flag">🇸🇳</div><div class="center-name">Zone01 Dakar</div><div class="center-country">Senegal</div><div class="center-stat"><span>95</span>talents available</div></div>
-    <div class="center-card"><div class="center-flag">🇫🇷</div><div class="center-name">Zone01 Rouen</div><div class="center-country">France</div><div class="center-stat"><span>100</span>talents available</div></div>
-  </div>
-  <div class="centers-total reveal"><span>715</span>AI-native engineers available across 5 centers today.</div>
-</section>
-
 <section id="what-we-build">
   <div class="section-label">What We Build</div>
   <h2>The best <em>AI-native engineers</em> <br>in the world.</h2>
@@ -493,6 +474,20 @@ footer .copy{font-size:.78rem;color:var(--muted);}
 
         </div>
   </div>
+</section>
+
+<section id="centers">
+  <div class="section-label">Offshoring Centers</div>
+  <h2>Where our <em>AI-native engineers</em> are trained and deployed.</h2>
+  <p class="section-sub">Five Zone01 campuses across three continents. Each center trains talent locally and deploys globally on mission through 01Talent.</p>
+  <div class="centers-grid reveal">
+    <div class="center-card"><div class="center-flag">🇬🇷</div><div class="center-name">Zone01 Athens</div><div class="center-country">Greece</div><div class="center-stat"><span>120</span>talents available</div></div>
+    <div class="center-card"><div class="center-flag">🇲🇦</div><div class="center-name">Zone01 Oujda</div><div class="center-country">Morocco</div><div class="center-stat"><span>250</span>talents available</div></div>
+    <div class="center-card"><div class="center-flag">🇰🇪</div><div class="center-name">Zone01 Kisumu</div><div class="center-country">Kenya</div><div class="center-stat"><span>150</span>talents available</div></div>
+    <div class="center-card"><div class="center-flag">🇸🇳</div><div class="center-name">Zone01 Dakar</div><div class="center-country">Senegal</div><div class="center-stat"><span>95</span>talents available</div></div>
+    <div class="center-card"><div class="center-flag">🇫🇷</div><div class="center-name">Zone01 Rouen</div><div class="center-country">France</div><div class="center-stat"><span>100</span>talents available</div></div>
+  </div>
+  <div class="centers-total reveal"><span>715</span>AI-native engineers available across 5 centers today.</div>
 </section>
 
 <section id="academies" style="background:var(--bg2);padding-top:0;padding-bottom:96px;">
@@ -834,19 +829,6 @@ footer .copy{font-size:.78rem;color:var(--muted);}
     });
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-</script>
-
-<!-- Twemoji: cross-platform emoji rendering -->
-<script>
-  (function() {
-    var s = document.createElement('script');
-    s.src = 'https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js';
-    s.crossOrigin = 'anonymous';
-    s.onload = function() {
-      twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
-    };
-    document.head.appendChild(s);
-  })();
 </script>
 </body>
 </html>
