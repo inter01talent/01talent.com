@@ -832,7 +832,16 @@ footer .copy{font-size:.78rem;color:var(--muted);}
 </script>
 
 <!-- Twemoji: cross-platform emoji rendering -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/twemoji.min.js" crossorigin="anonymous"></script>
-<script>twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });</script>
+<script>
+  (function() {
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js';
+    s.crossOrigin = 'anonymous';
+    s.onload = function() {
+      twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+    };
+    document.head.appendChild(s);
+  })();
+</script>
 </body>
 </html>
