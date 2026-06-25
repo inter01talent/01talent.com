@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01Talent: International AI-Native Engineering Talent Agency</title>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
 
     <meta
       name="description"
@@ -94,15 +98,26 @@
     ></script>
 
     <script src="js/main.js" defer></script>
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body id="top">
     <nav>
       <div class="logo">
-        <a href="#top" style="display: block; line-height: 0">
-          <picture>
+        <a href="#top">
+          <picture class="logo-light">
             <source srcset="images/logo.avif" type="image/avif" />
             <source srcset="images/logo.webp" type="image/webp" />
             <img src="images/logo.png" alt="01Talent" data-no-lightbox />
+          </picture>
+          <picture class="logo-dark">
+            <source srcset="images/logo_white.avif" type="image/avif" />
+            <source srcset="images/logo_white.webp" type="image/webp" />
+            <img src="images/logo_white.png" alt="01Talent" data-no-lightbox />
           </picture>
         </a>
       </div>
@@ -114,14 +129,52 @@
         <li><a href="#partners">Partners</a></li>
         <li><a href="#cta" class="nav-cta">Partner With Us</a></li>
       </ul>
-      <button
-        class="hamburger"
-        id="hamburger"
-        aria-label="Menu"
-        aria-expanded="false"
-      >
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-controls">
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          aria-label="Toggle dark mode"
+        >
+          <svg
+            class="moon-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg
+            class="sun-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <div class="mobile-menu" id="mobileMenu">
@@ -136,20 +189,8 @@
     <section id="hero">
       <div class="hero-grid"></div>
       <div class="hero-blob"></div>
-      <div
-        class="hero-inner"
-        style="
-          position: relative;
-          z-index: 2;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          gap: 64px;
-          padding-top: 80px;
-          padding-bottom: 48px;
-        "
-      >
-        <div class="hero-text" style="flex: 1; min-width: 0">
+      <div class="hero-inner">
+        <div class="hero-text">
           <h1 class="marketplace-headline">
             Your <em>Talent Agency</em> for the world's best
             <em>AI-native Engineers.</em>
@@ -160,14 +201,6 @@
               <source srcset="images/hero-kisumu.webp" type="image/webp" />
               <img
                 src="images/hero-kisumu.jpg"
-                style="
-                  width: 100%;
-                  border-radius: 16px;
-                  object-fit: cover;
-                  height: 220px;
-                  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-                  display: block;
-                "
                 alt="Zone01 Kisumu cohort of AI-native engineers"
               />
             </picture>
@@ -205,13 +238,6 @@
             <source srcset="images/hero-kisumu.webp" type="image/webp" />
             <img
               src="images/hero-kisumu.jpg"
-              style="
-                width: 100%;
-                border-radius: 20px;
-                object-fit: cover;
-                height: 380px;
-                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-              "
               alt="Zone01 Kisumu cohort of AI-native engineers"
             />
           </picture>
@@ -236,19 +262,7 @@
         <picture>
           <source srcset="images/team-photo.avif" type="image/avif" />
           <source srcset="images/team-photo.webp" type="image/webp" />
-          <img
-            src="images/team-photo.jpg"
-            style="
-              width: 100%;
-              max-width: 420px;
-              height: 320px;
-              object-fit: cover;
-              border-radius: 18px;
-              box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
-              flex-shrink: 0;
-            "
-            alt="01Talent Team"
-          />
+          <img src="images/team-photo.jpg" alt="01Talent Team" />
         </picture>
       </div>
       <div class="why-grid reveal">
@@ -315,20 +329,11 @@
             <source srcset="images/hackathon-oujda.webp" type="image/webp" />
             <img
               src="images/hackathon-oujda.jpg"
-              style="
-                width: 100%;
-                border-radius: 18px;
-                object-fit: cover;
-                height: 320px;
-                box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
-                margin-top: 28px;
-                display: block;
-              "
               alt="Zone01 Oujda engineers at Meet the Lead hackathon"
               loading="lazy"
             />
           </picture>
-          <p class="hire-lead" style="margin-top: 28px">
+          <p class="hire-lead">
             The AI transformation is restructuring every tech team, every
             product roadmap, every hiring decision. 01Talent gives you immediate
             access to a curated pool of AI-native engineers, ready to integrate
@@ -388,8 +393,9 @@
         <div class="center-card">
           <div class="center-flag">
             <img
-              src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ec-1f1f7.svg"
-              style="height: 1em; width: 1em; vertical-align: -0.1em"
+              src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/gr.svg"
+              alt="Greece flag"
+              class="modern-flag"
             />
           </div>
           <div class="center-name">Zone01 Athens</div>
@@ -399,8 +405,9 @@
         <div class="center-card">
           <div class="center-flag">
             <img
-              src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f2-1f1e6.svg"
-              style="height: 1em; width: 1em; vertical-align: -0.1em"
+              src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/ma.svg"
+              alt="Morocco flag"
+              class="modern-flag"
             />
           </div>
           <div class="center-name">Zone01 Oujda</div>
@@ -410,8 +417,9 @@
         <div class="center-card">
           <div class="center-flag">
             <img
-              src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f0-1f1ea.svg"
-              style="height: 1em; width: 1em; vertical-align: -0.1em"
+              src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/ke.svg"
+              alt="Kenya flag"
+              class="modern-flag"
             />
           </div>
           <div class="center-name">Zone01 Kisumu</div>
@@ -421,8 +429,9 @@
         <div class="center-card">
           <div class="center-flag">
             <img
-              src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f8-1f1f3.svg"
-              style="height: 1em; width: 1em; vertical-align: -0.1em"
+              src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/sn.svg"
+              alt="Senegal flag"
+              class="modern-flag"
             />
           </div>
           <div class="center-name">Zone01 Dakar</div>
@@ -432,8 +441,9 @@
         <div class="center-card">
           <div class="center-flag">
             <img
-              src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1eb-1f1f7.svg"
-              style="height: 1em; width: 1em; vertical-align: -0.1em"
+              src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/fr.svg"
+              alt="France flag"
+              class="modern-flag"
             />
           </div>
           <div class="center-name">Zone01 Rouen</div>
@@ -455,14 +465,6 @@
           <source srcset="images/student-platform.webp" type="image/webp" />
           <img
             src="images/student-platform.jpg"
-            style="
-              width: 100%;
-              border-radius: 16px;
-              object-fit: cover;
-              height: 200px;
-              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-              display: block;
-            "
             alt="AI-native software engineer trained on 01Edu platform"
             loading="lazy"
           />
@@ -516,13 +518,6 @@
             <source srcset="images/student-platform.webp" type="image/webp" />
             <img
               src="images/student-platform.jpg"
-              style="
-                width: 100%;
-                border-radius: 20px;
-                object-fit: cover;
-                height: 480px;
-                box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
-              "
               class="build-img"
               alt="AI-native software engineer trained on 01Edu platform"
               loading="lazy"
@@ -535,7 +530,7 @@
     <section id="process">
       <div class="section-label">How It Works</div>
       <h2>From <em>brief</em> to <em>deployment.</em></h2>
-      <p class="section-sub" style="margin-bottom: 0">
+      <p class="section-sub section-sub-no-margin">
         A streamlined three-step journey designed to be fast, precise, and
         partnership-driven.
       </p>
@@ -620,13 +615,7 @@
             engineering practices and an AI-native approach.
           </div>
         </div>
-        <div
-          class="card"
-          style="
-            background: var(--blue-faint);
-            border-color: var(--blue-border);
-          "
-        >
+        <div class="card card-bespoke">
           <div class="exp-tag">Bespoke</div>
           <div class="card-title">Your Stack</div>
           <div class="card-desc">
@@ -670,19 +659,12 @@
               <div class="edu-stat-label">Months of training</div>
             </div>
           </div>
-          <div style="margin-top: 28px">
+          <div class="btn-primary-wrap">
             <a
               href="https://01edu.ai"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-primary"
-              style="
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                font-size: 1rem;
-                padding: 16px 32px;
-              "
+              class="btn-primary btn-primary-edu"
               >Discover the 01Edu curriculum
               <svg
                 width="16"
@@ -742,16 +724,7 @@
           <source srcset="images/peer-learning.webp" type="image/webp" />
           <img
             src="images/peer-learning.jpg"
-            style="
-              width: 100%;
-              max-width: 480px;
-              height: 360px;
-              object-fit: cover;
-              border-radius: 18px;
-              box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
-              flex-shrink: 0;
-            "
-            class="method-img"
+            class="methodology-img"
             alt="Peer-to-peer learning model at 01Edu campus"
             loading="lazy"
           />
@@ -788,15 +761,10 @@
       </div>
     </section>
 
-    <section
-      id="partners"
-      style="padding: 72px 0; background: var(--bg3); overflow: hidden"
-    >
-      <div style="padding: 0 6vw; margin-bottom: 40px">
-        <div class="section-label" style="color: var(--muted)">
-          Our Partners
-        </div>
-        <h2 style="color: var(--text)">
+    <section id="partners">
+      <div class="partners-intro">
+        <div class="section-label partners-label">Our Partners</div>
+        <h2 class="partners-title">
           Trusted by <em>leading organizations</em> worldwide.
         </h2>
       </div>
@@ -1351,11 +1319,8 @@
       </div>
     </section>
 
-    <section
-      id="academies"
-      style="background: var(--bg2); padding-top: 0; padding-bottom: 96px"
-    >
-      <div style="border-top: 1px solid var(--border); padding-top: 64px">
+    <section id="academies">
+      <div class="academies-inner">
         <div class="section-label">01Network Partner Academies</div>
         <h2>A growing <em>global network</em> of partner campuses.</h2>
         <p class="section-sub">
@@ -1366,8 +1331,9 @@
           <div class="academy-card">
             <div class="academy-flag">
               <img
-                src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1e7-1f1ed.svg"
-                style="height: 1em; width: 1em; vertical-align: -0.1em"
+                src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/bh.svg"
+                alt="Bahrain flag"
+                class="modern-flag"
               />
             </div>
             <div class="academy-name">Reboot01</div>
@@ -1376,8 +1342,9 @@
           <div class="academy-card">
             <div class="academy-flag">
               <img
-                src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1e6-1f1fd.svg"
-                style="height: 1em; width: 1em; vertical-align: -0.1em"
+                src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/ax.svg"
+                alt="Åland flag"
+                class="modern-flag"
               />
             </div>
             <div class="academy-name">grit:lab</div>
@@ -1387,8 +1354,9 @@
           <div class="academy-card">
             <div class="academy-flag">
               <img
-                src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ec-1f1e7.svg"
-                style="height: 1em; width: 1em; vertical-align: -0.1em"
+                src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/gb.svg"
+                alt="United Kingdom flag"
+                class="modern-flag"
               />
             </div>
             <div class="academy-name">01Founders</div>
@@ -1397,8 +1365,9 @@
           <div class="academy-card">
             <div class="academy-flag">
               <img
-                src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ea-1f1ec.svg"
-                style="height: 1em; width: 1em; vertical-align: -0.1em"
+                src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/eg.svg"
+                alt="Egypt flag"
+                class="modern-flag"
               />
             </div>
             <div class="academy-name">NextEra</div>
@@ -1407,8 +1376,9 @@
           <div class="academy-card">
             <div class="academy-flag">
               <img
-                src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f3-1f1ec.svg"
-                style="height: 1em; width: 1em; vertical-align: -0.1em"
+                src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/ng.svg"
+                alt="Nigeria flag"
+                class="modern-flag"
               />
             </div>
             <div class="academy-name">Learn2Earn</div>
@@ -1417,8 +1387,9 @@
           <div class="academy-card">
             <div class="academy-flag">
               <img
-                src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1f0-1f1ff.svg"
-                style="height: 1em; width: 1em; vertical-align: -0.1em"
+                src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/kz.svg"
+                alt="Kazakhstan flag"
+                class="modern-flag"
               />
             </div>
             <div class="academy-name">Tomorrow School</div>
@@ -1428,8 +1399,9 @@
           <div class="academy-card">
             <div class="academy-flag">
               <img
-                src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1eb-1f1f7.svg"
-                style="height: 1em; width: 1em; vertical-align: -0.1em"
+                src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/fr.svg"
+                alt="France flag"
+                class="modern-flag"
               />
             </div>
             <div class="academy-name">Ynov</div>
@@ -1447,9 +1419,7 @@
         network.
       </p>
       <div class="news-carousel reveal">
-        <button class="news-nav-btn prev" onclick="newsSlide(-1)">
-          &#8592;
-        </button>
+        <button class="news-nav-btn prev">&#8592;</button>
         <div class="news-track-outer">
           <div class="news-track" id="newsTrack">
             <div class="news-card">
@@ -1475,10 +1445,22 @@
                   New 2026 Cohort Launches at Zone01 Rouen
                 </div>
                 <div class="news-card-date">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4cd.svg"
-                    style="height: 1em; width: 1em; vertical-align: -0.1em"
-                  />
+                  <svg
+                    class="location-pin"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                   Zone01 Rouen, France
                 </div>
                 <div class="news-card-desc">
@@ -1513,10 +1495,22 @@
                   Solutions
                 </div>
                 <div class="news-card-date">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4cd.svg"
-                    style="height: 1em; width: 1em; vertical-align: -0.1em"
-                  />
+                  <svg
+                    class="location-pin"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                   Zone01 Kisumu, Kenya
                 </div>
                 <div class="news-card-desc">
@@ -1551,10 +1545,22 @@
                   Summit
                 </div>
                 <div class="news-card-date">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4cd.svg"
-                    style="height: 1em; width: 1em; vertical-align: -0.1em"
-                  />
+                  <svg
+                    class="location-pin"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                   Zone01 Kisumu, Kenya
                 </div>
                 <div class="news-card-desc">
@@ -1589,10 +1595,22 @@
                   Athens is Announced!
                 </div>
                 <div class="news-card-date">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4cd.svg"
-                    style="height: 1em; width: 1em; vertical-align: -0.1em"
-                  />
+                  <svg
+                    class="location-pin"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                   Zone01 Athens, Greece
                 </div>
                 <div class="news-card-desc">
@@ -1626,10 +1644,22 @@
                   From Idea to Working AI Bot in a Day
                 </div>
                 <div class="news-card-date">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4cd.svg"
-                    style="height: 1em; width: 1em; vertical-align: -0.1em"
-                  />
+                  <svg
+                    class="location-pin"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                   Tomorrow School, Kazakhstan
                 </div>
                 <div class="news-card-desc">
@@ -1664,10 +1694,22 @@
                   Tech Visionaries
                 </div>
                 <div class="news-card-date">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4cd.svg"
-                    style="height: 1em; width: 1em; vertical-align: -0.1em"
-                  />
+                  <svg
+                    class="location-pin"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                   01Founders, United Kingdom
                 </div>
                 <div class="news-card-desc">
@@ -1680,27 +1722,22 @@
             </div>
           </div>
         </div>
-        <button class="news-nav-btn next" onclick="newsSlide(1)">
-          &#8594;
-        </button>
+        <button class="news-nav-btn next">&#8594;</button>
       </div>
     </section>
 
-    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-      <button class="lightbox-close" onclick="closeLightbox()">&#215;</button>
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close">&#215;</button>
       <img class="lightbox-img" id="lightboxImg" src="" alt="" />
     </div>
 
-    <section id="faq" style="background: var(--bg)">
+    <section id="faq">
       <div class="section-label">FAQ</div>
       <h2>Frequently asked <em>questions.</em></h2>
       <div class="faq-wrap reveal">
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span
-              style="font-size: 0.95rem; font-weight: 700; color: var(--text)"
-              >What is 01Talent?</span
-            >
+          <div class="faq-q">
+            <span>What is 01Talent?</span>
             <div class="faq-icon">+</div>
           </div>
           <div class="faq-a">
@@ -1715,11 +1752,8 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span
-              style="font-size: 0.95rem; font-weight: 700; color: var(--text)"
-              >What is an AI-native engineer?</span
-            >
+          <div class="faq-q">
+            <span>What is an AI-native engineer?</span>
             <div class="faq-icon">+</div>
           </div>
           <div class="faq-a">
@@ -1733,11 +1767,8 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span
-              style="font-size: 0.95rem; font-weight: 700; color: var(--text)"
-              >How does the hiring process work?</span
-            >
+          <div class="faq-q">
+            <span>How does the hiring process work?</span>
             <div class="faq-icon">+</div>
           </div>
           <div class="faq-a">
@@ -1750,11 +1781,8 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span
-              style="font-size: 0.95rem; font-weight: 700; color: var(--text)"
-              >How long are 01Talent engineers trained?</span
-            >
+          <div class="faq-q">
+            <span>How long are 01Talent engineers trained?</span>
             <div class="faq-icon">+</div>
           </div>
           <div class="faq-a">
@@ -1769,11 +1797,8 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span
-              style="font-size: 0.95rem; font-weight: 700; color: var(--text)"
-              >In which countries is 01Talent present?</span
-            >
+          <div class="faq-q">
+            <span>In which countries is 01Talent present?</span>
             <div class="faq-icon">+</div>
           </div>
           <div class="faq-a">
@@ -1787,11 +1812,8 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span
-              style="font-size: 0.95rem; font-weight: 700; color: var(--text)"
-              >What technologies do 01Talent engineers specialize in?</span
-            >
+          <div class="faq-q">
+            <span>What technologies do 01Talent engineers specialize in?</span>
             <div class="faq-icon">+</div>
           </div>
           <div class="faq-a">
@@ -1805,9 +1827,8 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q">
             <span
-              style="font-size: 0.95rem; font-weight: 700; color: var(--text)"
               >How is 01Talent different from a traditional staffing
               agency?</span
             >
@@ -1826,11 +1847,8 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span
-              style="font-size: 0.95rem; font-weight: 700; color: var(--text)"
-              >Can the training be adapted to my company's tech stack?</span
-            >
+          <div class="faq-q">
+            <span>Can the training be adapted to my company's tech stack?</span>
             <div class="faq-icon">+</div>
           </div>
           <div class="faq-a">
@@ -1855,7 +1873,7 @@
             curated pool of elite talent, vetted, trained on 01Edu, and ready to
             contribute from day one.
           </p>
-          <a href="#cta" class="btn-primary" style="display: inline-flex"
+          <a href="#cta" class="btn-primary btn-primary-inline"
             >Start a Partnership →</a
           >
         </div>
@@ -1863,154 +1881,47 @@
           <div class="hs-form-wrap">
             <div id="hs-cta-form"></div>
           </div>
-          <script>
-            window.addEventListener("load", function () {
-              if (window.hbspt) {
-                hbspt.forms.create({
-                  portalId: "25483699",
-                  formId: "e004571d-7fa0-4724-8bfb-c0130794c9fa",
-                  region: "eu1",
-                  target: "#hs-cta-form",
-                });
-              }
-            });
-          </script>
         </div>
       </div>
     </section>
 
     <footer>
-      <picture>
+      <picture class="logo-light">
         <source srcset="images/logo.avif" type="image/avif" />
         <source srcset="images/logo.webp" type="image/webp" />
         <img src="images/logo.png" alt="01Talent" data-no-lightbox />
       </picture>
+      <picture class="logo-dark">
+        <source srcset="images/logo_white.avif" type="image/avif" />
+        <source srcset="images/logo_white.webp" type="image/webp" />
+        <img src="images/logo_white.png" alt="01Talent" data-no-lightbox />
+      </picture>
       <div class="footer-tagline">Recode Our World With Talent</div>
-      <div
-        style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap"
-      >
-        <a
-          href="privacy-policy.html"
-          style="
-            font-size: 0.78rem;
-            color: var(--muted);
-            text-decoration: none;
-            transition: color 0.2s;
-          "
-          onmouseover="this.style.color = 'var(--blue)'"
-          onmouseout="this.style.color = 'var(--muted)'"
-          >Privacy Policy</a
-        >
-        <a
-          href="#"
-          id="manage-cookies-btn"
-          style="
-            font-size: 0.78rem;
-            color: var(--muted);
-            text-decoration: none;
-            transition: color 0.2s;
-          "
-          onmouseover="this.style.color = 'var(--blue)'"
-          onmouseout="this.style.color = 'var(--muted)'"
+      <div class="footer-links-wrap">
+        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+        <a href="#" id="manage-cookies-btn" class="footer-link"
           >Manage Cookies</a
         >
       </div>
       <div class="copy">© 2026 01Talent. All rights reserved.</div>
     </footer>
 
-    <div
-      id="cookie-banner"
-      style="
-        display: none;
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        width: min(680px, calc(100vw - 32px));
-        background: var(--text);
-        color: #fff;
-        border-radius: 16px;
-        padding: 20px 24px;
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
-        align-items: center;
-        gap: 20px;
-        flex-wrap: wrap;
-      "
-      role="dialog"
-      aria-label="Cookie consent"
-    >
-      <div style="flex: 1; min-width: 220px">
-        <p
-          style="
-            font-size: 0.82rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.85);
-            margin: 0;
-          "
-        >
+    <div id="cookie-banner" role="dialog" aria-label="Cookie consent">
+      <div class="cookie-text-wrap">
+        <p class="cookie-text">
           We use cookies to improve your experience and analyse site usage. See
           our
-          <a
-            href="privacy-policy.html"
-            style="color: #fff; font-weight: 700; text-decoration: underline"
-            >Privacy Policy</a
-          >
+          <a href="privacy-policy.html" class="cookie-link">Privacy Policy</a>
           for details.
         </p>
       </div>
-      <div style="display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap">
-        <button
-          id="cookie-reject"
-          style="
-            background: transparent;
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 9px 18px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: &quot;Montserrat&quot;, sans-serif;
-            transition: all 0.2s;
-          "
-        >
+      <div class="cookie-actions">
+        <button id="cookie-reject" class="cookie-btn-reject">
           Essential only
         </button>
-        <button
-          id="cookie-accept"
-          style="
-            background: var(--blue);
-            border: none;
-            color: #fff;
-            padding: 9px 20px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: &quot;Montserrat&quot;, sans-serif;
-            transition: background 0.2s;
-          "
-        >
-          Accept all
-        </button>
+        <button id="cookie-accept" class="cookie-btn-accept">Accept all</button>
       </div>
-      <button
-        id="cookie-close"
-        aria-label="Dismiss"
-        style="
-          position: absolute;
-          top: 12px;
-          right: 14px;
-          background: none;
-          border: none;
-          color: rgba(255, 255, 255, 0.5);
-          font-size: 1.1rem;
-          cursor: pointer;
-          line-height: 1;
-          padding: 4px;
-        "
-      >
+      <button id="cookie-close" class="cookie-close" aria-label="Dismiss">
         &#215;
       </button>
     </div>

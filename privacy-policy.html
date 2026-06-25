@@ -26,13 +26,28 @@
 
     <!-- External JavaScript -->
     <script src="js/main.js" defer></script>
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
   <body>
     <nav>
       <div class="logo">
-        <a href="index.html" style="display: block; line-height: 0"
-          ><img src="images/logo.png" alt="01Talent" data-no-lightbox
-        /></a>
+        <a href="index.html">
+          <picture class="logo-light">
+            <source srcset="images/logo.avif" type="image/avif" />
+            <source srcset="images/logo.webp" type="image/webp" />
+            <img src="images/logo.png" alt="01Talent" data-no-lightbox />
+          </picture>
+          <picture class="logo-dark">
+            <source srcset="images/logo_white.avif" type="image/avif" />
+            <source srcset="images/logo_white.webp" type="image/webp" />
+            <img src="images/logo_white.png" alt="01Talent" data-no-lightbox />
+          </picture>
+        </a>
       </div>
       <ul>
         <li><a href="index.html#why">Why 01Talent</a></li>
@@ -42,14 +57,52 @@
         <li><a href="index.html#partners">Partners</a></li>
         <li><a href="index.html#cta" class="nav-cta">Partner With Us</a></li>
       </ul>
-      <button
-        class="hamburger"
-        id="hamburger"
-        aria-label="Menu"
-        aria-expanded="false"
-      >
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-controls">
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          aria-label="Toggle dark mode"
+        >
+          <svg
+            class="moon-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg
+            class="sun-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <div class="mobile-menu" id="mobileMenu">
@@ -526,11 +579,20 @@
     </div>
 
     <footer>
-      <img src="images/logo.png" alt="01Talent" data-no-lightbox />
+      <picture class="logo-light">
+        <source srcset="images/logo.avif" type="image/avif" />
+        <source srcset="images/logo.webp" type="image/webp" />
+        <img src="images/logo.png" alt="01Talent" data-no-lightbox />
+      </picture>
+      <picture class="logo-dark">
+        <source srcset="images/logo_white.avif" type="image/avif" />
+        <source srcset="images/logo_white.webp" type="image/webp" />
+        <img src="images/logo_white.png" alt="01Talent" data-no-lightbox />
+      </picture>
       <div class="footer-tagline">Recode Our World With Talent</div>
-      <div class="footer-links">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="index.html#cta">Contact</a>
+      <div class="footer-links-wrap">
+        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+        <a href="index.html#cta" class="footer-link">Contact</a>
       </div>
       <div class="copy">© 2026 01Talent. All rights reserved.</div>
     </footer>

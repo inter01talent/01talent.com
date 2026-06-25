@@ -1,16 +1,13 @@
 /* * File: js/main.js
  * Context: Core interactivity scripts for 01Talent website.
  * Includes IntersectionObserver for scroll animations, Mobile navigation toggle,
- * Image Lightbox functionality, News Carousel controls, FAQ accordion, and Cookie Banner management.
+ * Image Lightbox functionality, News Carousel controls (Infinite), FAQ accordion, and Cookie Banner management.
  */
-
-// ==========================================================================
-// GLOBALLY ACCESSIBLE FUNCTIONS (Called via inline onclick attributes)
-// ==========================================================================
 
 // --- FAQ Accordion ---
 function toggleFaq(el) {
   const item = el.closest(".faq-item");
+  if (!item) return;
   const isOpen = item.classList.contains("faq-open");
 
   // Close all open FAQs
@@ -18,41 +15,76 @@ function toggleFaq(el) {
     i.classList.remove("faq-open");
     i.querySelector(".faq-a").style.maxHeight = "0";
     i.querySelector(".faq-a").style.paddingBottom = "0";
-    i.querySelector(".faq-icon").style.background = "";
-    i.querySelector(".faq-icon").style.borderColor = "";
-    i.querySelector(".faq-icon").style.color = "var(--muted)";
-    i.querySelector(".faq-icon").textContent = "+";
+    const icon = i.querySelector(".faq-icon");
+    if (icon) {
+      icon.style.background = "";
+      icon.style.borderColor = "";
+      icon.style.color = "var(--muted)";
+      icon.textContent = "+";
+    }
   });
 
   // Open clicked FAQ
   if (!isOpen) {
     item.classList.add("faq-open");
-    item.querySelector(".faq-a").style.maxHeight = "300px";
-    item.querySelector(".faq-icon").style.background = "var(--blue)";
-    item.querySelector(".faq-icon").style.borderColor = "var(--blue)";
-    item.querySelector(".faq-icon").style.color = "#fff";
-    item.querySelector(".faq-icon").textContent = "×";
+    const faqA = item.querySelector(".faq-a");
+    if (faqA) faqA.style.maxHeight = "300px";
+    const icon = item.querySelector(".faq-icon");
+    if (icon) {
+      icon.style.background = "var(--blue)";
+      icon.style.borderColor = "var(--blue)";
+      icon.style.color = "#fff";
+      icon.textContent = "×";
+    }
   }
 }
 
-// --- News Carousel ---
-let newsPos = 0;
+// --- True Infinite News Carousel JS Functionality ---
+let isAnimating = false;
+
 function newsSlide(dir) {
   const track = document.getElementById("newsTrack");
-  if (!track) return;
+  if (!track || isAnimating) return;
 
   const cards = track.querySelectorAll(".news-card");
   if (!cards.length) return;
 
-  const total = cards.length;
-  const cardW = cards[0].offsetWidth + 28; // Card width + gap
-  const visible = Math.max(
-    1,
-    Math.floor(track.parentElement.offsetWidth / cardW),
-  );
+  isAnimating = true;
 
-  newsPos = (((newsPos + dir) % total) + total) % total;
-  track.style.transform = "translateX(-" + newsPos * cardW + "px)";
+  // Dynamically calculate width + gap to support responsive resizing
+  const gap = parseInt(window.getComputedStyle(track).gap || 28);
+  const cardW = cards[0].offsetWidth + gap;
+
+  if (dir === 1) {
+    // Slide Next
+    track.style.transition = "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+    track.style.transform = `translateX(-${cardW}px)`;
+
+    setTimeout(() => {
+      // Move first element to the end instantly
+      track.style.transition = "none";
+      track.appendChild(track.firstElementChild);
+      track.style.transform = "translateX(0)";
+      isAnimating = false;
+    }, 400);
+  } else {
+    // Slide Prev
+    track.style.transition = "none";
+    // Move last element to the start instantly, shifting the track left
+    track.prepend(track.lastElementChild);
+    track.style.transform = `translateX(-${cardW}px)`;
+
+    // Force a browser reflow so the transition applies smoothly
+    void track.offsetWidth;
+
+    // Animate smoothly back to 0
+    track.style.transition = "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+    track.style.transform = "translateX(0)";
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 400);
+  }
 }
 
 // --- Lightbox Global Close ---
@@ -91,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (lightbox && lightboxImg) {
     document.querySelectorAll("img:not([data-no-lightbox])").forEach((img) => {
       if (img.closest(".partner-logo-item")) return;
-      if (img.src && img.src.includes("twemoji")) return;
+      if (img.classList.contains("modern-flag")) return; // Don't trigger on flag icons
 
       img.style.cursor = "pointer";
       img.addEventListener("click", () => {
@@ -105,7 +137,27 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeLightbox();
     });
+
+    lightbox.addEventListener("click", closeLightbox);
+    const closeBtn = lightbox.querySelector(".lightbox-close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeLightbox();
+      });
+    }
   }
+
+  // --- FAQ Listeners ---
+  document.querySelectorAll(".faq-q").forEach((q) => {
+    q.addEventListener("click", () => toggleFaq(q));
+  });
+
+  // --- News Carousel Listeners ---
+  const prevBtn = document.querySelector(".news-nav-btn.prev");
+  const nextBtn = document.querySelector(".news-nav-btn.next");
+  if (prevBtn) prevBtn.addEventListener("click", () => newsSlide(-1));
+  if (nextBtn) nextBtn.addEventListener("click", () => newsSlide(1));
 
   // --- Mobile Menu Toggle ---
   const hamburger = document.getElementById("hamburger");
@@ -147,19 +199,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document
       .getElementById("cookie-accept")
-      ?.addEventListener("click", function () {
-        dismiss("all");
-      });
+      ?.addEventListener("click", () => dismiss("all"));
     document
       .getElementById("cookie-reject")
-      ?.addEventListener("click", function () {
-        dismiss("essential");
-      });
+      ?.addEventListener("click", () => dismiss("essential"));
     document
       .getElementById("cookie-close")
-      ?.addEventListener("click", function () {
-        dismiss("dismissed");
-      });
+      ?.addEventListener("click", () => dismiss("dismissed"));
 
     const mgr = document.getElementById("manage-cookies-btn");
     if (mgr) {
@@ -171,5 +217,33 @@ document.addEventListener("DOMContentLoaded", function () {
         banner.style.display = "flex";
       });
     }
+  }
+
+  // --- Theme Toggle ---
+  const themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      let theme = document.documentElement.getAttribute("data-theme");
+      let targetTheme = theme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", targetTheme);
+      localStorage.setItem("theme", targetTheme);
+    });
+  }
+});
+
+// ==========================================================================
+// WINDOW LOAD EVENT LISTENERS
+// ==========================================================================
+
+window.addEventListener("load", function () {
+  // --- HubSpot Form Initialization ---
+  if (window.hbspt) {
+    hbspt.forms.create({
+      portalId: "25483699",
+      formId: "e004571d-7fa0-4724-8bfb-c0130794c9fa",
+      region: "eu1",
+      target: "#hs-cta-form",
+      css: "",
+    });
   }
 });
