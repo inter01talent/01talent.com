@@ -4,17 +4,23 @@
  * Image Lightbox functionality, News Carousel controls (Infinite), FAQ accordion, Cookie Banner management, and Navbar Scroll effects.
  */
 
-// --- FAQ Accordion ---
-function toggleFaq(el) {
+/**
+ * Toggles FAQ accordion items.
+ * @param {HTMLElement} el The clicked FAQ question element.
+ */
+const toggleFaq = (el) => {
   const item = el.closest(".faq-item");
   if (!item) return;
   const isOpen = item.classList.contains("faq-open");
 
   // Close all open FAQs
-  document.querySelectorAll(".faq-item.faq-open").forEach(function (i) {
+  document.querySelectorAll(".faq-item.faq-open").forEach((i) => {
     i.classList.remove("faq-open");
-    i.querySelector(".faq-a").style.maxHeight = "0";
-    i.querySelector(".faq-a").style.paddingBottom = "0";
+    const faqA = i.querySelector(".faq-a");
+    if (faqA) {
+      faqA.style.maxHeight = "0";
+      faqA.style.paddingBottom = "0";
+    }
     const icon = i.querySelector(".faq-icon");
     if (icon) {
       icon.style.background = "";
@@ -37,12 +43,14 @@ function toggleFaq(el) {
       icon.textContent = "×";
     }
   }
-}
+};
 
-// --- True Infinite News Carousel JS Functionality ---
+/**
+ * Handles sliding for the infinite news carousel.
+ * @param {number} dir Direction of the slide (1 for Next, -1 for Prev).
+ */
 let isAnimating = false;
-
-function newsSlide(dir) {
+const newsSlide = (dir) => {
   const track = document.getElementById("newsTrack");
   if (!track || isAnimating) return;
 
@@ -57,11 +65,10 @@ function newsSlide(dir) {
 
   if (dir === 1) {
     // Slide Next
-    track.style.transition = "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+    track.style.transition = "transform 0.4s var(--transition-func)";
     track.style.transform = `translateX(-${cardW}px)`;
 
     setTimeout(() => {
-      // Move first element to the end instantly
       track.style.transition = "none";
       track.appendChild(track.firstElementChild);
       track.style.transform = "translateX(0)";
@@ -70,25 +77,26 @@ function newsSlide(dir) {
   } else {
     // Slide Prev
     track.style.transition = "none";
-    // Move last element to the start instantly, shifting the track left
     track.prepend(track.lastElementChild);
     track.style.transform = `translateX(-${cardW}px)`;
 
-    // Force a browser reflow so the transition applies smoothly
+    // Force a browser reflow
     void track.offsetWidth;
 
-    // Animate smoothly back to 0
-    track.style.transition = "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+    track.style.transition = "transform 0.4s var(--transition-func)";
     track.style.transform = "translateX(0)";
 
     setTimeout(() => {
       isAnimating = false;
     }, 400);
   }
-}
+};
 
-// --- Lightbox Global Close ---
-function closeLightbox(e) {
+/**
+ * Closes the image lightbox.
+ * @param {Event} [e] The trigger event.
+ */
+const closeLightbox = (e) => {
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
   if (e && e.target === lightboxImg) return;
@@ -96,13 +104,13 @@ function closeLightbox(e) {
     lightbox.classList.remove("active");
     document.body.style.overflow = "";
   }
-}
+};
 
 // ==========================================================================
 // DOM CONTENT LOADED EVENT LISTENERS
 // ==========================================================================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   // --- Navbar Scroll State ---
   const nav = document.querySelector("nav");
   if (nav) {
@@ -113,9 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
         nav.classList.remove("nav-scrolled");
       }
     };
-    // Listen for scroll events
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Trigger once on load to catch if the user refreshed midway down the page
     handleScroll();
   }
 
@@ -199,19 +205,19 @@ document.addEventListener("DOMContentLoaded", function () {
   if (banner) {
     const consent = localStorage.getItem("01t_cookie_consent");
     if (!consent) {
-      setTimeout(function () {
+      setTimeout(() => {
         banner.style.display = "flex";
       }, 1200);
     }
 
-    function dismiss(value) {
+    const dismiss = (value) => {
       localStorage.setItem("01t_cookie_consent", value);
       banner.style.opacity = "0";
       banner.style.transition = "opacity .3s";
-      setTimeout(function () {
+      setTimeout(() => {
         banner.style.display = "none";
       }, 300);
-    }
+    };
 
     document
       .getElementById("cookie-accept")
@@ -225,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const mgr = document.getElementById("manage-cookies-btn");
     if (mgr) {
-      mgr.addEventListener("click", function (e) {
+      mgr.addEventListener("click", (e) => {
         e.preventDefault();
         localStorage.removeItem("01t_cookie_consent");
         banner.style.opacity = "1";
@@ -251,10 +257,10 @@ document.addEventListener("DOMContentLoaded", function () {
 // WINDOW LOAD EVENT LISTENERS
 // ==========================================================================
 
-window.addEventListener("load", function () {
+window.addEventListener("load", () => {
   // --- HubSpot Form Initialization ---
   if (window.hbspt) {
-    hbspt.forms.create({
+    window.hbspt.forms.create({
       portalId: "25483699",
       formId: "e004571d-7fa0-4724-8bfb-c0130794c9fa",
       region: "eu1",

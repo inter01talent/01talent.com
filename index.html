@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01Talent: International AI-Native Engineering Talent Agency</title>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
     <meta
       name="description"
@@ -82,11 +82,18 @@
         }
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <link rel="stylesheet" href="css/main.css" />
 
@@ -112,12 +119,24 @@
           <picture class="logo-light">
             <source srcset="images/logo.avif" type="image/avif" />
             <source srcset="images/logo.webp" type="image/webp" />
-            <img src="images/logo.png" alt="01Talent" data-no-lightbox />
+            <img
+              src="images/logo.png"
+              alt="01Talent"
+              data-no-lightbox
+              width="150"
+              height="38"
+            />
           </picture>
           <picture class="logo-dark">
             <source srcset="images/logo_white.avif" type="image/avif" />
             <source srcset="images/logo_white.webp" type="image/webp" />
-            <img src="images/logo_white.png" alt="01Talent" data-no-lightbox />
+            <img
+              src="images/logo_white.png"
+              alt="01Talent"
+              data-no-lightbox
+              width="150"
+              height="38"
+            />
           </picture>
         </a>
       </div>
@@ -203,6 +222,9 @@
               <img
                 src="images/hero-kisumu.jpg"
                 alt="Zone01 Kisumu cohort of AI-native engineers"
+                width="800"
+                height="533"
+                fetchpriority="high"
               />
             </picture>
           </div>
@@ -240,6 +262,9 @@
             <img
               src="images/hero-kisumu.jpg"
               alt="Zone01 Kisumu cohort of AI-native engineers"
+              width="800"
+              height="533"
+              fetchpriority="high"
             />
           </picture>
         </div>
@@ -263,7 +288,13 @@
         <picture>
           <source srcset="images/team-photo.avif" type="image/avif" />
           <source srcset="images/team-photo.webp" type="image/webp" />
-          <img src="images/team-photo.jpg" alt="01Talent Team" />
+          <img
+            src="images/team-photo.jpg"
+            alt="01Talent Team"
+            loading="lazy"
+            width="800"
+            height="600"
+          />
         </picture>
       </div>
       <div class="why-grid reveal">
@@ -332,6 +363,8 @@
               src="images/hackathon-oujda.jpg"
               alt="Zone01 Oujda engineers at Meet the Lead hackathon"
               loading="lazy"
+              width="800"
+              height="600"
             />
           </picture>
           <p class="hire-lead">
@@ -397,6 +430,9 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/gr.svg"
               alt="Greece flag"
               class="modern-flag"
+              loading="lazy"
+              width="36"
+              height="36"
             />
           </div>
           <div class="center-name">Zone01 Athens</div>
@@ -409,6 +445,9 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/ma.svg"
               alt="Morocco flag"
               class="modern-flag"
+              loading="lazy"
+              width="36"
+              height="36"
             />
           </div>
           <div class="center-name">Zone01 Oujda</div>
@@ -421,6 +460,9 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/ke.svg"
               alt="Kenya flag"
               class="modern-flag"
+              loading="lazy"
+              width="36"
+              height="36"
             />
           </div>
           <div class="center-name">Zone01 Kisumu</div>
@@ -433,6 +475,9 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/sn.svg"
               alt="Senegal flag"
               class="modern-flag"
+              loading="lazy"
+              width="36"
+              height="36"
             />
           </div>
           <div class="center-name">Zone01 Dakar</div>
@@ -445,6 +490,9 @@
               src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/fr.svg"
               alt="France flag"
               class="modern-flag"
+              loading="lazy"
+              width="36"
+              height="36"
             />
           </div>
           <div class="center-name">Zone01 Rouen</div>
@@ -468,6 +516,8 @@
             src="images/student-platform.jpg"
             alt="AI-native software engineer trained on 01Edu platform"
             loading="lazy"
+            width="800"
+            height="600"
           />
         </picture>
       </div>
@@ -522,6 +572,8 @@
               class="build-img"
               alt="AI-native software engineer trained on 01Edu platform"
               loading="lazy"
+              width="800"
+              height="600"
             />
           </picture>
         </div>
@@ -728,6 +780,8 @@
             class="methodology-img"
             alt="Peer-to-peer learning model at 01Edu campus"
             loading="lazy"
+            width="800"
+            height="600"
           />
         </picture>
       </div>
@@ -785,6 +839,9 @@
                 src="images/partners/partner-deloitte.png"
                 alt="Deloitte"
                 title="Deloitte"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -802,6 +859,9 @@
                 src="images/partners/partner-horizont.png"
                 alt="Horizont"
                 title="Horizont"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -819,6 +879,9 @@
                 src="images/partners/partner-mastercard-foundation.png"
                 alt="Mastercard Foundation"
                 title="Mastercard Foundation"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -836,6 +899,9 @@
                 src="images/partners/partner-cih-bank.png"
                 alt="CIH Bank"
                 title="CIH Bank"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -853,6 +919,9 @@
                 src="images/partners/partner-al-barid-bank.png"
                 alt="Al Barid Bank"
                 title="Al Barid Bank"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -870,6 +939,9 @@
                 src="images/partners/partner-cleyrop.png"
                 alt="Cleyrop"
                 title="Cleyrop"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -887,6 +959,9 @@
                 src="images/partners/partner-lakehub.png"
                 alt="LakeHub"
                 title="LakeHub"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -904,6 +979,9 @@
                 src="images/partners/partner-credit-agricole.png"
                 alt="Crédit Agricole"
                 title="Crédit Agricole"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -921,6 +999,9 @@
                 src="images/partners/partner-future-africa.png"
                 alt="Future Africa"
                 title="Future Africa"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -938,6 +1019,9 @@
                 src="images/partners/partner-smart-africa.png"
                 alt="Smart Africa"
                 title="Smart Africa"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -955,6 +1039,9 @@
                 src="images/partners/partner-royaume-du-maroc.png"
                 alt="Royaume du Maroc"
                 title="Royaume du Maroc"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -972,6 +1059,9 @@
                 src="images/partners/partner-council-of-governors-kenya.png"
                 alt="Council of Governors"
                 title="Council of Governors"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -989,6 +1079,9 @@
                 src="images/partners/partner-region-de-loriental.png"
                 alt="Région de l'Oriental"
                 title="Région de l'Oriental"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -1006,6 +1099,9 @@
                 src="images/partners/partner-ddf.png"
                 alt="DDF"
                 title="DDF"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -1023,6 +1119,9 @@
                 src="images/partners/partner-founders-forum.png"
                 alt="Founders Forum"
                 title="Founders Forum"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -1040,6 +1139,9 @@
                 src="images/partners/partner-cccg.png"
                 alt="CGLU Africa"
                 title="CGLU Africa"
+                loading="lazy"
+                width="160"
+                height="60"
               />
             </picture>
           </div>
@@ -1335,6 +1437,9 @@
                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/bh.svg"
                 alt="Bahrain flag"
                 class="modern-flag"
+                loading="lazy"
+                width="36"
+                height="36"
               />
             </div>
             <div class="academy-name">Reboot01</div>
@@ -1346,6 +1451,9 @@
                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/ax.svg"
                 alt="Åland flag"
                 class="modern-flag"
+                loading="lazy"
+                width="36"
+                height="36"
               />
             </div>
             <div class="academy-name">grit:lab</div>
@@ -1358,6 +1466,9 @@
                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/gb.svg"
                 alt="United Kingdom flag"
                 class="modern-flag"
+                loading="lazy"
+                width="36"
+                height="36"
               />
             </div>
             <div class="academy-name">01Founders</div>
@@ -1369,6 +1480,9 @@
                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/eg.svg"
                 alt="Egypt flag"
                 class="modern-flag"
+                loading="lazy"
+                width="36"
+                height="36"
               />
             </div>
             <div class="academy-name">NextEra</div>
@@ -1380,6 +1494,9 @@
                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/ng.svg"
                 alt="Nigeria flag"
                 class="modern-flag"
+                loading="lazy"
+                width="36"
+                height="36"
               />
             </div>
             <div class="academy-name">Learn2Earn</div>
@@ -1391,6 +1508,9 @@
                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/kz.svg"
                 alt="Kazakhstan flag"
                 class="modern-flag"
+                loading="lazy"
+                width="36"
+                height="36"
               />
             </div>
             <div class="academy-name">Tomorrow School</div>
@@ -1403,6 +1523,9 @@
                 src="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/flags/4x3/fr.svg"
                 alt="France flag"
                 class="modern-flag"
+                loading="lazy"
+                width="36"
+                height="36"
               />
             </div>
             <div class="academy-name">Ynov</div>
@@ -1451,6 +1574,8 @@
                   loading="lazy"
                   src="images/news/news-rouen-cohort.png"
                   alt="New 2026 Cohort Launches at Zone01 Rouen"
+                  width="420"
+                  height="260"
                 />
               </picture>
               <div class="news-card-body">
@@ -1500,6 +1625,8 @@
                   loading="lazy"
                   src="images/news/news-blockchain-hackathon.png"
                   alt="Blockchain Hackathon: 48 Hours of Intensity and Decentralized Solutions"
+                  width="420"
+                  height="260"
                 />
               </picture>
               <div class="news-card-body">
@@ -1550,6 +1677,8 @@
                   loading="lazy"
                   src="images/news/news-atf-ai-challenge.png"
                   alt="ATF AI Challenge: Applications Close for Africa's Premier AI Summit"
+                  width="420"
+                  height="260"
                 />
               </picture>
               <div class="news-card-body">
@@ -1600,6 +1729,8 @@
                   loading="lazy"
                   src="images/news/news-panathenea-hackathon.png"
                   alt="Florent x Panathenea Festival: The Biggest AI Hackathon in Athens is Announced!"
+                  width="420"
+                  height="260"
                 />
               </picture>
               <div class="news-card-body">
@@ -1650,6 +1781,8 @@
                   loading="lazy"
                   src="images/news/news-tomorrow-school.png"
                   alt="From Idea to Working AI Bot in a Day"
+                  width="420"
+                  height="260"
                 />
               </picture>
               <div class="news-card-body">
@@ -1699,6 +1832,8 @@
                   loading="lazy"
                   src="images/news/news-founder-series.png"
                   alt="Founder Series London: Connecting Tomorrow's Tech Leaders with Tech Visionaries"
+                  width="420"
+                  height="260"
                 />
               </picture>
               <div class="news-card-body">
@@ -1916,12 +2051,26 @@
       <picture class="logo-light">
         <source srcset="images/logo.avif" type="image/avif" />
         <source srcset="images/logo.webp" type="image/webp" />
-        <img src="images/logo.png" alt="01Talent" data-no-lightbox />
+        <img
+          src="images/logo.png"
+          alt="01Talent"
+          data-no-lightbox
+          loading="lazy"
+          width="103"
+          height="26"
+        />
       </picture>
       <picture class="logo-dark">
         <source srcset="images/logo_white.avif" type="image/avif" />
         <source srcset="images/logo_white.webp" type="image/webp" />
-        <img src="images/logo_white.png" alt="01Talent" data-no-lightbox />
+        <img
+          src="images/logo_white.png"
+          alt="01Talent"
+          data-no-lightbox
+          loading="lazy"
+          width="103"
+          height="26"
+        />
       </picture>
       <div class="footer-tagline">Recode Our World With Talent</div>
       <div class="footer-links-wrap">
